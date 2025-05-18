@@ -2,12 +2,12 @@
 * [x] Develop a `scripts/bootstrap.sh` script to automate environment setup on a fresh Ubuntu 24.04 sandbox (and macOS) – update package lists, install Python3/pip if missing, and ensure Node.js + npm are available (use `apt-get` on Linux, Homebrew or pre-installed tools on macOS).
 <!-- /TASK -->
 
-<!-- TASK:FS02 status=pending -->
-* [ ] In the bootstrap script, ensure all required dependencies are installed for offline use. First, create a `requirements.txt` with pinned versions of the Python packages (e.g. **google-adk**, **litellm**) and have the script run `pip install -r requirements.txt`. Also pre-install the MCP server packages with `npm install -g @modelcontextprotocol/server-filesystem @modelcontextprotocol/server-github`. (If Node.js or npm are missing on Linux, use `apt-get` to install them as a fallback.)
+<!-- TASK:FS02 status=done -->
+* [x] In the bootstrap script, ensure all required dependencies are installed for offline use. First, create a `requirements.txt` with pinned versions of the Python packages (e.g. **google-adk**, **litellm**) and have the script run `pip install -r requirements.txt`. Also pre-install the MCP server packages with `npm install -g @modelcontextprotocol/server-filesystem @modelcontextprotocol/server-github`. (If Node.js or npm are missing on Linux, use `apt-get` to install them as a fallback.)
 <!-- /TASK -->
 
-<!-- TASK:FS03 status=pending -->
-* [ ] Create base folders: `agents/`, `mcp_servers/`, `configs/`, `reports/`, `scripts/` (add `.gitkeep` or placeholder files so each is tracked).
+<!-- TASK:FS03 status=done -->
+* [x] Create base folders: `agents/`, `mcp_servers/`, `configs/`, `reports/`, `scripts/` (add `.gitkeep` or placeholder files so each is tracked).
 <!-- /TASK -->
 
 <!-- TASK:FS04 status=pending -->

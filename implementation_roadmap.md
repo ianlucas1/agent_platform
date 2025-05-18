@@ -6,7 +6,7 @@
 
 * [ ] Develop a `scripts/bootstrap.sh` script to automate environment setup on a fresh Ubuntu 24.04 sandbox (and macOS) – update package lists, install Python3/pip if missing, and ensure Node.js + npm are available (use `apt-get` on Linux, Homebrew or preinstalled tools on macOS).
 
-<!-- TASK:FS02 status=pending -->
+<!-- TASK:FS02 status=done -->
 
 * [ ] In the bootstrap script, install required Python packages (via `pip install -r requirements.txt`) including **google-adk** (ADK) and **litellm** (Codex client). Also use npm to pre-install MCP server packages (e.g. `npm install -g @modelcontextprotocol/server-filesystem @modelcontextprotocol/server-github`) so they can run offline.
 
@@ -14,7 +14,7 @@
 
 ## Repository Structure
 
-<!-- TASK:FS03 status=pending -->
+<!-- TASK:FS03 status=done -->
 
 * [ ] Create the base project folders: `agents/`, `mcp_servers/`, `configs/`, `reports/`, and `scripts/`. Add placeholder files or `.gitkeep` as needed so each directory is tracked in Git.
 
