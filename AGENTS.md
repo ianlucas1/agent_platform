@@ -16,6 +16,7 @@
 - - Use Python 3.11 syntax, black + isort defaults (to be added later).
 - - All shell scripts must be Unix-LF and executable (`chmod +x`).
 - - Unit-tests will be introduced in later tasks; keep code modular.
+- Run `ruff check --fix && black . && bandit -r .` before commit.
 
 ## Pull-Request Guidelines
 
@@ -24,6 +25,13 @@
 
 ### PR title
 `[FS<ID>] <imperative verb phrase>`  (≤ 60 chars)
+
+### Commit-message prefixes
+| Prefix | Purpose |
+| ------ | ------- |
+| `feat:` | New feature or enhancement |
+| `fix:` | Bug fix |
+| `chore:` | Maintenance or tooling |
 
 ### PR body template
 ```markdown
