@@ -3,7 +3,7 @@
 <!-- /TASK -->
 
 <!-- TASK:FS02 status=pending -->
-* [ ] In the bootstrap script, install required Python packages (via `pip install -r requirements.txt`) including **google-adk** and **litellm**. Also pre-install MCP server packages with `npm install -g @modelcontextprotocol/server-filesystem @modelcontextprotocol/server-github` so they can run offline.
+* [ ] In the bootstrap script, ensure all required dependencies are installed for offline use. First, create a `requirements.txt` with pinned versions of the Python packages (e.g. **google-adk**, **litellm**) and have the script run `pip install -r requirements.txt`. Also pre-install the MCP server packages with `npm install -g @modelcontextprotocol/server-filesystem @modelcontextprotocol/server-github`. (If Node.js or npm are missing on Linux, use `apt-get` to install them as a fallback.)
 <!-- /TASK -->
 
 <!-- TASK:FS03 status=pending -->
@@ -14,20 +14,20 @@
 * [ ] In `agents/`, add `agents/dev_agent.py` and empty `agents/__init__.py`. `dev_agent.py` should stub a minimal agent class or instance (to be wired later).
 <!-- /TASK -->
 
-<!-- TASK:FS05 status=pending -->
-* [ ] Under `configs/`, add `AGENTS.md` (brief agent catalog) and an **empty** `ROADMAP_TODO.md` (this file).
+<!-- TASK:FS05 status=done -->
+* [x] Under `configs/`, add `AGENTS.md` (brief agent catalog) and an **empty** `ROADMAP_TODO.md` (this file).
 <!-- /TASK -->
 
-<!-- TASK:FS06 status=pending -->
-* [ ] Add an empty `reports/` directory for debrief files (commit with `.gitkeep` if needed).
+<!-- TASK:FS06 status=done -->
+* [x] Add an empty `reports/` directory for debrief files (commit with `.gitkeep` if needed).
 <!-- /TASK -->
 
 <!-- TASK:FS07 status=pending -->
-* [ ] Create `requirements.txt` (or `pyproject.toml`) pinning dependencies (`google-adk`, `litellm`, etc.) and add a `.gitignore` ignoring Python artifacts, `node_modules/`, secrets.
+* [ ] Add a `.gitignore` file covering Python artifacts (e.g. `__pycache__/`, `*.pyc`), the `node_modules/` directory, and any sensitive config or secret files.
 <!-- /TASK -->
 
 <!-- TASK:FS08 status=pending -->
-* [ ] Write a concise `README.md` covering project purpose, bootstrap usage, and required environment variables (`OPENAI_API_KEY`, `GITHUB_PERSONAL_ACCESS_TOKEN`, …).
+* [ ] Write a concise `README.md` covering the project’s purpose, how to run the bootstrap script, and required environment variables (e.g. `OPENAI_API_KEY`, `GITHUB_PERSONAL_ACCESS_TOKEN`). Also note that after setup the agent runs inside the sandbox with no direct internet access.
 <!-- /TASK -->
 
 <!-- TASK:FS09 status=pending -->
@@ -51,7 +51,7 @@
 <!-- /TASK -->
 
 <!-- TASK:FS14 status=pending -->
-* [ ] Create `.github/workflows/bootstrap.yml` that checks out the repo on a macOS runner, runs `scripts/bootstrap.sh`, and fails on any error.
+* [ ] Create a `.github/workflows/bootstrap.yml` workflow that checks out the repo on a macOS runner (Apple Silicon), runs `scripts/bootstrap.sh`, and fails on any error. Optionally include a second job on Ubuntu to verify Linux compatibility.
 <!-- /TASK -->
 
 <!-- TASK:FS15 status=pending -->
@@ -71,14 +71,14 @@
 <!-- /TASK -->
 
 <!-- TASK:FS19 status=pending -->
-* [ ] Orchestrate the execution loop:  
-  1. Load next pending task.  
-  2. Invoke `dev_agent` to perform work using its tools.  
-  3. Capture completion signal or fallback if no further actions.
+* [ ] Orchestrate the execution loop in a new Python script (e.g. `scripts/run_tasks.py`):  
+  1. Load the next pending task.  
+  2. Invoke the `dev_agent` to perform the task using its tools.  
+  3. Capture the completion signal or handle if no further actions remain.
 <!-- /TASK -->
 
 <!-- TASK:FS20 status=pending -->
-* [ ] After completing a task, use GitHub tool to create a PR on a new branch named after the task ID; include descriptive title/body.
+* [ ] After completing a task, use the GitHub tool to create a PR on a new branch named after the task ID; include a descriptive title and body.
 <!-- /TASK -->
 
 <!-- TASK:FS21 status=pending -->
@@ -94,7 +94,7 @@
 <!-- /TASK -->
 
 <!-- TASK:FS24 status=pending -->
-* [ ] Expand agent toolset (e.g. Google Search using `GOOGLE_API_KEY`) via ADK tool interface; load tools lazily to keep runtime lean.
+* [ ] Expand the agent’s toolset (e.g. Google Search using `GOOGLE_API_KEY`) via the ADK tool interface; load tools lazily to keep runtime lean.
 <!-- /TASK -->
 
 <!-- TASK:FS25 status=pending -->
