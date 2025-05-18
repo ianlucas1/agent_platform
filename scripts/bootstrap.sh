@@ -46,6 +46,7 @@ if [[ -n "${NO_NET:-}" ]]; then
     echo "NO_NET set – skipping pip/npm installs." >&2
 else
     pip3 install --no-cache-dir -r requirements.txt
+    pip3 install --no-cache-dir -r requirements-dev.txt
     npm install -g @modelcontextprotocol/server-filesystem @modelcontextprotocol/server-github
 fi
 
