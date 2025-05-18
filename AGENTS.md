@@ -16,3 +16,32 @@
 - - Use Python 3.11 syntax, black + isort defaults (to be added later).
 - - All shell scripts must be Unix-LF and executable (`chmod +x`).
 - - Unit-tests will be introduced in later tasks; keep code modular.
+
+## Pull-Request Guidelines
+
+### Branch name
+`codex/task-<ID>-<slug>`
+
+### PR title
+`[FS<ID>] <imperative verb phrase>`  (≤ 60 chars)
+
+### PR body template
+```markdown
+## Summary
+<single sentence purpose>
+
+## Changes
+- Bullet list of key file additions / edits
+- Link to debrief file (e.g. `reports/NNN_debrief.md`)
+
+## Testing
+```bash
+# commands run
+<command list>
+```
+* Result: <green output / exit 0>
+
+## References
+
+Closes FS<ID>
+
