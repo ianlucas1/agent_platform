@@ -17,6 +17,8 @@
 - - All shell scripts must be Unix-LF and executable (`chmod +x`).
 - - Unit-tests will be introduced in later tasks; keep code modular.
 - Run `ruff check --fix && black . && bandit -r .` before commit.
+- If you’re working **offline**, run `pip install -r requirements-dev.txt` once to cache the formatter/linter wheels, then use  
+  `ruff check --fix . && black . --check && bandit -r .` before committing.
 
 ## Pull-Request Guidelines
 
