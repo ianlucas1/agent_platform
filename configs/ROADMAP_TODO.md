@@ -1,5 +1,5 @@
-<!-- TASK:FS01 status=pending -->
-* [ ] Develop a `scripts/bootstrap.sh` script to automate environment setup on a fresh Ubuntu 24.04 sandbox (and macOS) – update package lists, install Python3/pip if missing, and ensure Node.js + npm are available (use `apt-get` on Linux, Homebrew or pre-installed tools on macOS).
+<!-- TASK:FS01 status=done -->
+* [x] Develop a `scripts/bootstrap.sh` script to automate environment setup on a fresh Ubuntu 24.04 sandbox (and macOS) – update package lists, install Python3/pip if missing, and ensure Node.js + npm are available (use `apt-get` on Linux, Homebrew or pre-installed tools on macOS).
 <!-- /TASK -->
 
 <!-- TASK:FS02 status=pending -->
