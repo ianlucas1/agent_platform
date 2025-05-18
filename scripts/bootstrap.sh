@@ -4,7 +4,18 @@ set -euo pipefail
 OS="$(uname)"
 
 if [[ "$OS" == "Linux" ]]; then
-    echo "Linux detected – assuming python3/pip & node/npm already present; skipping apt-get."
+    # Ensure python3, pip3, node, npm exist or can be installed
+    for pkg in python3 pip3 node npm; do
+        if ! command -v "$pkg" >/dev/null 2>&1; then
+            if command -v apt-get >/dev/null && [[ "$(id -u)" == 0 ]]; then
+                apt-get update -y && apt-get install -y python3 python3-pip nodejs npm
+                break
+            else
+                echo "$pkg missing and no root privileges; see docs/offline_setup.md" >&2
+                exit 1
+            fi
+        fi
+    done
 elif [[ "$OS" == "Darwin" ]]; then
     if command -v brew >/dev/null 2>&1; then
         brew update
@@ -29,5 +40,13 @@ for cmd in python3 pip3 node npm; do
         exit 1
     fi
 done
+
+# Install Python dependencies and MCP servers
+if [[ -n "${NO_NET:-}" ]]; then
+    echo "NO_NET set – skipping pip/npm installs." >&2
+else
+    pip3 install --no-cache-dir -r requirements.txt
+    npm install -g @modelcontextprotocol/server-filesystem @modelcontextprotocol/server-github
+fi
 
 echo "Bootstrap completed successfully."
