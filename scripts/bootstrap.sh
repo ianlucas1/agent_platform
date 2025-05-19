@@ -10,9 +10,19 @@ OS="$(uname)"
 
 if [[ "$OS" == "Linux" ]]; then
   export DEBIAN_FRONTEND=noninteractive
-  apt-get -qq update
+  # Helper that runs apt-get directly if we are root, or via sudo when we are not.
+  apt_get() {
+    if [[ "$(id -u)" == 0 ]]; then
+      apt-get -qq "$@"
+    else
+      sudo -n apt-get -qq "$@" || {
+        echo "WARN: apt-get $1 skipped (no sudo privileges)"; return 0; }
+    fi
+  }
+
+  apt_get update
   # Ubuntu 24.04 ships Python 3.12; add 3.11 here only if you must.
-  apt-get -qq install -y --no-install-recommends python3 python3-pip nodejs npm
+  apt_get install -y --no-install-recommends python3 python3-pip nodejs npm
 elif [[ "$OS" == "Darwin" ]]; then
   if command -v brew >/dev/null 2>&1; then
     brew update >/dev/null

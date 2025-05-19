@@ -1,0 +1,31 @@
+name: bootstrap
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  lint-matrix:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run project bootstrap
+        run: |
+          chmod +x scripts/bootstrap.sh
+          scripts/bootstrap.sh
+
+      - name: Ruff lint
+        run: ruff check .
+
+      - name: Black formatting (check mode)
+        run: black --check .
+
+      - name: Bandit security scan
+        run: bandit -r .
