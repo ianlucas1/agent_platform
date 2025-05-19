@@ -12,7 +12,7 @@ git clone https://github.com/ianlucas1/codex_agent_platform.git my-app
 cd my-app
 
 # 2. One-shot environment setup
-./scripts/bootstrap.sh          # installs Python, Node, ADK, MCP servers
+./scripts/bootstrap.sh          # installs Python, Node, ADK (v0.5.0), MCP servers
 
 # 3. First autonomous run (offline-safe)
 NO_NET=1 python scripts/run_tasks.py --max-tasks 1
@@ -42,10 +42,10 @@ NO_NET=1 python scripts/run_tasks.py --max-tasks 1
 
 ---
 
-## Roadmap status (18 May 2025)
+## Roadmap status (20 May 2025)
 
-* **Completed:** FS01 Bootstrap, FS02 Dependencies, FS03 Repo-scaffold
-* **Next up:** FS04 `dev_agent.py` stub → FS12 minimal ADK agent
+* **Completed:** FS01–FS14 (bootstrap, agent stub, CI setup)
+* **Next up:** FS15 roadmap parser, FS16 status updater
 * Live queue: see [`configs/ROADMAP_TODO.md`](configs/ROADMAP_TODO.md)
 
 ---
