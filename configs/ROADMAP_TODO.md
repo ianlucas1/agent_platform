@@ -16,8 +16,8 @@ Legend
 <!-- TASK:FS03 status=done -->
 - [x] **FS03 – Create base folders** — `agents/ mcp_servers/ configs/ reports/ scripts/` committed (with `.gitkeep`).
 
-<!-- TASK:FS04 status=pending -->
-- [ ] **FS04 – Stub `dev_agent.py`** — add minimal `DevAgent` class (google-adk, no tools yet); must import cleanly.
+<!-- TASK:FS04 status=done -->
+- [x] **FS04 – Stub `dev_agent.py`** — add minimal `DevAgent` class (google-adk, no tools yet); must import cleanly.
 
 <!-- TASK:FS05 status=done -->
 - [x] **FS05 – Add AGENTS.md** — brief agent catalogue & contribution tips.
