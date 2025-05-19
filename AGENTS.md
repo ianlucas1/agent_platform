@@ -14,8 +14,8 @@
 * **Single clear goal** – one FS task (or tight bundle) only.
 * **Acceptance-criteria bullets** – each is objectively testable.
 * **Branch name** – `capx/FSxx-short-slug` (no spaces, lower-case).
-* **Include test commands in prompt** – `ruff check .`, `black --check .`, and (when present) `pytest`.
-* **End with “Begin.”** – cues Codex to start the implementation chain-of-thought.
+* **Include test commands in prompt** – `ruff check .`, `black --check .`, and `bandit -r .` (always required).
+* **End with `# Begin.`** – cues Codex to start the implementation chain-of-thought.
 
 1. Read the next **`status=pending`** task in `configs/ROADMAP_TODO.md`.
 2. Implement it inside the sandbox and stage the changes on a branch named `capx/FSxx-slug` (the **Push** button appears).
@@ -28,6 +28,8 @@
 ```python
 from google.adk import Agent
 from google.adk.models.lite_llm import LiteLlm
+# google-adk==0.3.1 is no longer available
+# Requires google-adk>=0.5.0 (check requirements.txt)
 
 model = LiteLlm(model="openai/codex-mini-latest")  # string, not LiteLLM()
 dev_agent = Agent(
