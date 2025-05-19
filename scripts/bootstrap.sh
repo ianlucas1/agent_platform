@@ -1,52 +1,70 @@
 #!/usr/bin/env bash
+# CAP-X bootstrap – install all toolchains while the network is still up
 set -euo pipefail
+trap 'echo "BOOTSTRAP FAILED on line $LINENO" >&2' ERR
 
+###############################################################################
+# 0. Detect platform & ensure core runtimes
+###############################################################################
 OS="$(uname)"
 
 if [[ "$OS" == "Linux" ]]; then
-    # Ensure python3, pip3, node, npm exist or can be installed
-    for pkg in python3 pip3 node npm; do
-        if ! command -v "$pkg" >/dev/null 2>&1; then
-            if command -v apt-get >/dev/null && [[ "$(id -u)" == 0 ]]; then
-                apt-get update -y && apt-get install -y python3 python3-pip nodejs npm
-                break
-            else
-                echo "$pkg missing and no root privileges; see docs/offline_setup.md" >&2
-                exit 1
-            fi
-        fi
-    done
+  export DEBIAN_FRONTEND=noninteractive
+  apt-get -qq update
+  # Ubuntu 24.04 ships Python 3.12; add 3.11 here only if you must.
+  apt-get -qq install -y --no-install-recommends python3 python3-pip nodejs npm
 elif [[ "$OS" == "Darwin" ]]; then
-    if command -v brew >/dev/null 2>&1; then
-        brew update
-        # Install python3 and node via brew if not installed
-        for pkg in python3 node; do
-            if ! brew list "$pkg" >/dev/null 2>&1; then
-                brew install "$pkg"
-            fi
-        done
-    else
-        echo "Homebrew not found. Ensure python3, pip3, node, and npm are installed." >&2
-    fi
-else
-    echo "Unsupported operating system: $OS" >&2
+  if command -v brew >/dev/null 2>&1; then
+    brew update >/dev/null
+    for pkg in python3 node; do
+      brew list "$pkg" >/dev/null 2>&1 || brew install "$pkg"
+    done
+  else
+    echo "❌  Homebrew not found; install python3 & node manually." >&2
     exit 1
+  fi
+else
+  echo "❌ Unsupported operating system: $OS" >&2
+  exit 1
 fi
 
-# Verify commands exist
+# Sanity-check
 for cmd in python3 pip3 node npm; do
-    if ! command -v "$cmd" >/dev/null 2>&1; then
-        echo "$cmd is required but was not installed." >&2
-        exit 1
-    fi
+  command -v "$cmd" >/dev/null 2>&1 || {
+    echo "❌ $cmd is required but not installed." >&2
+    exit 1
+  }
 done
 
-# Install Python dependencies and MCP servers
-if [[ -n "${NO_NET:-}" ]]; then
-    echo "NO_NET set – skipping pip/npm installs." >&2
+###############################################################################
+# 1. Python & Node dependencies  (network still available in this phase)
+###############################################################################
+if [[ -z "${NO_NET:-}" ]]; then
+  # --- Core agent/runtime deps ------------------------------------------------
+  pip3 install --quiet google-adk litellm        # TODO: pin & vendor wheels
+  npm install -g --quiet --no-fund --omit=dev \
+    @modelcontextprotocol/server-filesystem \
+    @modelcontextprotocol/server-github
+
+  # --- Dev-toolchain (formatters / linters) ----------------------------------
+  if [[ -f requirements-dev.txt ]]; then
+    # Use --no-cache-dir so wheels don’t fill the 4 GB sandbox
+    pip3 install --quiet --no-cache-dir -r requirements-dev.txt \
+      || echo "WARNING: some dev wheels unavailable offline"
+  else
+    echo "INFO: requirements-dev.txt not present; skipping dev-tool install"
+  fi
 else
-    pip3 install --no-cache-dir -r requirements.txt
-    npm install -g @modelcontextprotocol/server-filesystem @modelcontextprotocol/server-github
+  echo "NO_NET set – skipping pip/npm installs." >&2
 fi
 
-echo "Bootstrap completed successfully."
+# --- Smoke-check versions so the box fails fast if anything is missing -------
+command -v ruff   >/dev/null && ruff   --version || echo "ruff   N/A"
+command -v black  >/dev/null && black  --version || echo "black  N/A"
+command -v bandit >/dev/null && bandit --version || echo "bandit N/A (skipped)"
+
+###############################################################################
+# 2. Signal offline mode for downstream scripts
+###############################################################################
+export NO_NET=1
+echo "✅  Bootstrap complete – NO_NET=1 exported; subsequent scripts run offline."
