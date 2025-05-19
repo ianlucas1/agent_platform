@@ -1,3 +1,6 @@
+### 🧠 `DEEP_RESEARCH.md`
+
+```markdown
 # Deep Research – Standard Operating Procedures  
 *codex_agent_platform · established 2025-05-19*
 
@@ -27,11 +30,9 @@ Deep Research should **verify repo state before planning**. Paste the skeleton b
 
 # 🔍  Assumptions-check Task
 
-#
+# Instructions:
 
-# Instructions
-
-# 1. For each numbered assumption, inspect the main branch.
+# 1. Inspect the main branch.
 
 # 2. Respond in a MARKDOWN table:
 
@@ -39,9 +40,7 @@ Deep Research should **verify repo state before planning**. Paste the skeleton b
 
 # 3. No code changes; read-only.
 
-# 4. End with the single word “Done”.
-
-#
+# 4. End with the word “Done”.
 
 ## Assumptions
 
@@ -60,26 +59,26 @@ If any row **FAIL**s, fix the repo **or the assumption** before proceeding with 
 
 ---
 
-## 3 ▪ Codex-web agent capabilities & limitations
+## 3 ▪ Codex-web agent capabilities & limits
 
-* **Can:** write/modify files, stage a branch, run tests/lint, display full logs.  
-* **Cannot:** click “Push”, open PRs, or merge; the human does that.  
-* **Reads:** any file in the repo and especially **AGENTS.md** for norms.  
-* **Requires:** exact branch naming (`capx/FS<ID>-slug`) and acceptance bullets to satisfy.  
-* **Offline after bootstrap:** add all packages during the online phase or vendor wheels.
+* **Can:** edit code, run tests/lint, create commits, stage branches.
+* **Cannot:** push, open PRs, merge, or inspect CI outcomes.
+* **Reads:** anything in the repo (esp. `AGENTS.md`).
+* **Requires:** accurate assumptions, branch naming, and acceptance bullets.
+* **Goes offline after bootstrap:** nothing can be downloaded post-`NO_NET=1`.
 
 ---
 
 ## 4 ▪ Bootstrap expectations
 
-| Item | Expected in `bootstrap.sh` |
+| Item | Expected in `scripts/bootstrap.sh` |
 |------|----------------------------|
-| Core runtimes | `python3 pip3 node npm` installed (Ubuntu 24.04 → Python 3.12). |
-| Core deps | `pip install google-adk litellm` |
-| Dev deps | `pip install -r requirements-dev.txt` (ruff 0.11.10, black 25.1.0, bandit 1.7.7). |
+| Core runtimes | `python3 pip3 node npm` (Ubuntu 24.04 → Python 3.12). |
+| Core deps | `pip install google-adk litellm`. |
+| Dev deps | `pip install -r requirements-dev.txt` (ruff==0.11.10, black==25.1.0, bandit==1.7.7). |
 | Quiet flags | `apt-get -qq`, `npm --quiet --no-fund --omit=dev`. |
-| Safety | `trap 'BOOTSTRAP FAILED on line $LINENO' ERR` |
-| Offline flag | `export NO_NET=1` printed as final line. |
+| Safety | `trap 'BOOTSTRAP FAILED on line $LINENO' ERR`. |
+| Offline flag | `export NO_NET=1` and “✅ Bootstrap complete” printed at end. |
 
 ---
 
@@ -90,53 +89,111 @@ If any row **FAIL**s, fix the repo **or the assumption** before proceeding with 
 * Mark previous FS task done in ROADMAP\_TODO.md.
 * Single clear goal (one FS task).
 * List acceptance bullets (objectively testable).
-* Branch name capx/FS<ID>-slug.
-* Include ruff, black, bandit (and pytest if present) commands.
+* Branch name: capx/FS<ID>-slug.
+* Include ruff, black, bandit (and pytest if present).
 * End with “# Begin.” to cue Codex.
 
+````
+
+---
+
+## 6 ▪ Codex Task SOP – End-to-End Workflow
+
+### 6.1 Pre-task: Bootstrap & Assumptions
+
+1. **Check the Codex Environment UI** (https://chatgpt.com/codex/settings/)
+   - Confirm setup script includes:
+     - `PIP_BREAK_SYSTEM_PACKAGES=1` for macOS
+     - `export NO_NET=1` as final line
+     - All required tools in apt/brew + pip
+   - If setup is incomplete → patch `scripts/bootstrap.sh` and commit.
+
+2. **Generate task-specific assumptions-check**
+   - Use template in §2 and adjust assumptions based on the FS task ahead.
+   - Deliver this to Codex first, before prompting work.
+
+---
+
+### 6.2 Task Prompting
+
+1. **Write one-task prompt** per FS item.
+2. **Include:**
+   - Summary of goal.
+   - Acceptance bullets.
+   - Branch name: `capx/FS<ID>-slug`.
+   - Expected commits, file changes, and CI prep steps.
+3. **End with:**  
+   ```bash
+   # Begin.
+````
+
+---
+
+### 6.3 Output Review
+
+1. Share Codex's diffs + logs with Deep Research.
+2. Look for:
+
+   * Agent confusion or hallucination
+   * Broken assumptions (wrong file paths, test names, etc.)
+   * Missing env flags, silent errors
+3. If work is clean, **you (human) push PR** to trigger CI.
+
+---
+
+### 6.4 CI Handling
+
+1. If CI fails:
+
+   * Ask Codex to `gh pr view --web` or `gh run list` to inspect failure.
+   * Agent should patch and recommit.
+2. You must push; Codex cannot.
+3. Be aware:
+
+   * Pushing a new commit to the same branch updates the PR.
+   * Avoid opening duplicate PRs from Codex unless task requires it.
+4. Optionally consolidate PR lineage post-merge if needed.
+
+---
+
+### 6.5 Task Debrief (Optional)
+
+1. Prompt Codex to write a **short markdown debrief**:
+
+   * What it did
+   * What assumptions were tested
+   * Any known limitations or TODOs
+2. Store in:
+
+   ```
+   agent_logs/FS<ID>_debrief.md
+   ```
+3. Flag tasks with structural lessons learned for future prompt refinement.
+
+---
+
+## 7 ▪ Task-log & failure interpretation
+
+| Look for                               | Meaning                    | Action                                   |
+| -------------------------------------- | -------------------------- | ---------------------------------------- |
+| `ModuleNotFoundError`                  | Missing pip package.       | Add to `requirements*.txt` or vendor it. |
+| `Permission denied`                    | Script isn’t executable.   | `chmod +x` and commit.                   |
+| `OpenAI/network error` post-`NO_NET=1` | Late API call attempt.     | Stub or move to online phase.            |
+| `ruff / black / bandit` fails          | Formatting issues.         | Codex needs clearer rules.               |
+| `bandit N/A`                           | Bandit wheel not vendored. | Pin in dev reqs.                         |
+
+---
+
+## 8 ▪ Future improvements
+
+* Add “assumptions-check” as CI job.
+* Create long-term memory tooling for agent retrospectives.
+* Support headless Codex invocation with prefilled env + SOP references.
+
+---
+
+*Updated 2025-05-20.*
+
 ```
 
----
-
-## 6 ▪ Future improvements
-
-* Add “assumptions-check” as a CI job to warn when expectations drift.  
-* Expand memory tooling (FS25) so Deep Research can query long-term artefacts.
-
----
-
-## 7 ▪ Log-scrutiny & setup-script sanity
-
-### 7.1  Codex task-log review (always do after a run)
-
-| Look for | What it means | Typical fix |
-|----------|---------------|-------------|
-| **ModuleNotFoundError** | A package isn’t in `requirements*.txt` or bootstrap skipped it. | Pin the wheel or vendor it; update bootstrap. |
-| **Permission denied** on `.sh` | Script lacks `+x`. | `git update-index --chmod=+x file.sh`. |
-| **OpenAI / network errors** after NO_NET=1 | Code tried a live API call. | Stub the call or move install to online phase. |
-| Lint/format failures | Prompt or code didn’t follow Ruff/Black. | Update code or exemptions. |
-| `bandit N/A` in smoke-check | Bandit wheel missing. | Add `bandit==…` to `requirements-dev.txt` or vendor. |
-
-> **SOP:** Summarise the key errors/warnings and decide whether to  
-> (a) patch assumptions in the prompt, or (b) fix the code / bootstrap.
-
----
-
-### 7.2  Why the setup script matters
-
-* **Single source of environment truth** – Codex runs *only* what bootstrap installs **before** `NO_NET=1`; nothing can be fetched later.  
-* **Version pinning** – prevents upstream library updates from silently breaking lint/tests.  
-* **Resource guardrails** – small model, CPU-only, 4 GB RAM. Heavy installs or GPU flags will OOM.  
-* **Signal flag** – exports `NO_NET=1` so downstream scripts know to avoid network calls.
-
-> **Checklist before each major task**  
-> 1. Does bootstrap still run green locally?  
-> 2. Are all new deps either in `requirements*.txt` or vendored?  
-> 3. Does the final log line show `✅ Bootstrap complete – NO_NET=1 exported`?
-
-Keep this script lean, deterministic, and *loud* on failure. Every Codex run depends on it.
-
-_Updated 2025-05-19._
-
-```
 ---
