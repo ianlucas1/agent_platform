@@ -25,7 +25,7 @@ Legend
 <!-- TASK:FS06 status=done -->
 - [x] **FS06 – Empty reports/ dir** — committed with placeholder to track debriefs.
 
-<!-- TASK:FS07 status=pending -->
+<!-- TASK:FS07 status=done -->
 - [x] **FS07 – Project `.gitignore`** — ignore `node_modules/`, `__pycache__/`, `.venv/`, logs, vendor wheels.
 
 <!-- TASK:FS08 status=done -->
