@@ -105,5 +105,38 @@ If any row **FAIL**s, fix the repo **or the assumption** before proceeding with 
 
 ---
 
+## 7 ▪ Log-scrutiny & setup-script sanity
+
+### 7.1  Codex task-log review (always do after a run)
+
+| Look for | What it means | Typical fix |
+|----------|---------------|-------------|
+| **ModuleNotFoundError** | A package isn’t in `requirements*.txt` or bootstrap skipped it. | Pin the wheel or vendor it; update bootstrap. |
+| **Permission denied** on `.sh` | Script lacks `+x`. | `git update-index --chmod=+x file.sh`. |
+| **OpenAI / network errors** after NO_NET=1 | Code tried a live API call. | Stub the call or move install to online phase. |
+| Lint/format failures | Prompt or code didn’t follow Ruff/Black. | Update code or exemptions. |
+| `bandit N/A` in smoke-check | Bandit wheel missing. | Add `bandit==…` to `requirements-dev.txt` or vendor. |
+
+> **SOP:** Summarise the key errors/warnings and decide whether to  
+> (a) patch assumptions in the prompt, or (b) fix the code / bootstrap.
+
+---
+
+### 7.2  Why the setup script matters
+
+* **Single source of environment truth** – Codex runs *only* what bootstrap installs **before** `NO_NET=1`; nothing can be fetched later.  
+* **Version pinning** – prevents upstream library updates from silently breaking lint/tests.  
+* **Resource guardrails** – small model, CPU-only, 4 GB RAM. Heavy installs or GPU flags will OOM.  
+* **Signal flag** – exports `NO_NET=1` so downstream scripts know to avoid network calls.
+
+> **Checklist before each major task**  
+> 1. Does bootstrap still run green locally?  
+> 2. Are all new deps either in `requirements*.txt` or vendored?  
+> 3. Does the final log line show `✅ Bootstrap complete – NO_NET=1 exported`?
+
+Keep this script lean, deterministic, and *loud* on failure. Every Codex run depends on it.
+
 _Updated 2025-05-19._
+
 ```
+---
