@@ -23,6 +23,23 @@
 4. Human opens the pull request; CI runs.  If checks fail, the human may ask Codex to inspect logs and fix.
 5. Human merges the pull request once all checks pass.
 
+### ADK quick-reference (dev_agent stubs)
+
+```python
+from google.adk import Agent
+from google.adk.models.lite_llm import LiteLlm
+
+model = LiteLlm(model="openai/codex-mini-latest")  # string, not LiteLLM()
+dev_agent = Agent(
+    name="DevAgent",
+    model=model,
+    instruction="You are DevAgent inside an offline sandbox.",
+    tools=[],         # no tools wired yet
+)
+
+# Synchronous helper (for smoke-tests only)
+Agent.run = lambda self, p: "pong"  # avoid live calls while NO_NET=1
+
 ## Style & validation
 - - Use Python 3.12-compatible syntax (Ubuntu 24.04 default) and Black formatting (isort rules will be added later).
 - - All shell scripts must be Unix-LF and executable (`chmod +x`).
