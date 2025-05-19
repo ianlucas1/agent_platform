@@ -18,9 +18,10 @@
 * **End with “Begin.”** – cues Codex to start the implementation chain-of-thought.
 
 1. Read the next **`status=pending`** task in `configs/ROADMAP_TODO.md`.
-2. Implement it inside the sandbox.
-3. Open a PR + write `reports/NNN_debrief.md`.
-4. Wait for human review before merging.
+2. Implement it inside the sandbox and stage the changes on a branch named `capx/FSxx-slug` (the **Push** button appears).
+3. Stop and present the diff — the **human clicks Push** to send the branch to GitHub.
+4. Human opens the pull request; CI runs.  If checks fail, the human may ask Codex to inspect logs and fix.
+5. Human merges the pull request once all checks pass.
 
 ## Style & validation
 - - Use Python 3.11 syntax, black + isort defaults (to be added later).
