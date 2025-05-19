@@ -7,6 +7,16 @@
 - `mcp_servers/` / `reports/` / etc. created as tasks proceed
 
 ## How Codex should work
+
+### Prompt checklist (what every Codex task prompt must include)
+
+* **Mark the previous FS task done** – update `configs/ROADMAP_TODO.md` (`status=done`, checkbox ☑).
+* **Single clear goal** – one FS task (or tight bundle) only.
+* **Acceptance-criteria bullets** – each is objectively testable.
+* **Branch name** – `capx/FSxx-short-slug` (no spaces, lower-case).
+* **Include test commands in prompt** – `ruff check .`, `black --check .`, and (when present) `pytest`.
+* **End with “Begin.”** – cues Codex to start the implementation chain-of-thought.
+
 1. Read the next **`status=pending`** task in `configs/ROADMAP_TODO.md`.
 2. Implement it inside the sandbox.
 3. Open a PR + write `reports/NNN_debrief.md`.
