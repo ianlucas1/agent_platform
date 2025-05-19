@@ -4,5 +4,5 @@ line-length = 88
 [tool.isort]
 profile = "black"
 
-[tool.ruff]
+[tool.ruff.lint]
 select = ["E", "F", "B"]
