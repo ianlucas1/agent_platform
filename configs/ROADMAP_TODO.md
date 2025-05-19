@@ -40,8 +40,8 @@ Legend
 <!-- TASK:FS11 status=pending -->
 - [ ] **FS11 – Optional MCP docs** — new `docs/optional_mcp.md` listing extra servers & env vars.
 
-<!-- TASK:FS12 status=pending -->
-- [ ] **FS12 – Minimal ADK agent** — instantiate `DevAgent` with LiteLLM (model `openai/codex-mini-latest`).
+<!-- TASK:FS12 status=done -->
+- [x] **FS12 – Minimal ADK agent** — instantiate `DevAgent` with LiteLLM (model `openai/codex-mini-latest`).
 
 <!-- TASK:FS13 status=pending -->
 - [ ] **FS13 – Agent docstring** — explain extension points & tool wiring in `dev_agent.py`.
