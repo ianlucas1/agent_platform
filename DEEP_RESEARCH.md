@@ -136,8 +136,8 @@ Please also evaluate this setup script (paste it below):
    - Expected file changes and CI outcomes
 3. End with:
 ```
-
-# Begin.
+Begin.
+```
 
 ````
 
