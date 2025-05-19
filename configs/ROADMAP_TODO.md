@@ -1,110 +1,97 @@
+# CAP-X Task Backlog  
+_Last updated 2025-05-18_
+
+Legend  
+* `[ ]` pending   `[-]` in progress   `[x]` done  
+* Each task is preceded by an HTML comment the automation loop can patch.
+
+---
+
 <!-- TASK:FS01 status=done -->
-* [x] Develop a `scripts/bootstrap.sh` script to automate environment setup on a fresh Ubuntu 24.04 sandbox (and macOS) – update package lists, install Python3/pip if missing, and ensure Node.js + npm are available (use `apt-get` on Linux, Homebrew or pre-installed tools on macOS).
-<!-- /TASK -->
+- [x] **FS01 – Bootstrap script** — `scripts/bootstrap.sh` installs Python 3.11, Node 18, apt/brew packages.
 
 <!-- TASK:FS02 status=done -->
-* [x] In the bootstrap script, ensure all required dependencies are installed for offline use. First, create a `requirements.txt` with pinned versions of the Python packages (e.g. **google-adk**, **litellm**) and have the script run `pip install -r requirements.txt`. Also pre-install the MCP server packages with `npm install -g @modelcontextprotocol/server-filesystem @modelcontextprotocol/server-github`. (If Node.js or npm are missing on Linux, use `apt-get` to install them as a fallback.)
-<!-- /TASK -->
+- [x] **FS02 – Offline dependency install** — pre-pin Python wheels & NPM MCP servers for `NO_NET=1` runs.
 
 <!-- TASK:FS03 status=done -->
-* [x] Create base folders: `agents/`, `mcp_servers/`, `configs/`, `reports/`, `scripts/` (add `.gitkeep` or placeholder files so each is tracked).
-<!-- /TASK -->
+- [x] **FS03 – Create base folders** — `agents/ mcp_servers/ configs/ reports/ scripts/` committed (with `.gitkeep`).
 
 <!-- TASK:FS04 status=pending -->
-* [ ] In `agents/`, add `agents/dev_agent.py` and empty `agents/__init__.py`. `dev_agent.py` should stub a minimal agent class or instance (to be wired later).
-<!-- /TASK -->
+- [ ] **FS04 – Stub `dev_agent.py`** — add minimal `DevAgent` class (google-adk, no tools yet); must import cleanly.
 
 <!-- TASK:FS05 status=done -->
-* [x] Under `configs/`, add `AGENTS.md` (brief agent catalog) and an **empty** `ROADMAP_TODO.md` (this file).
-<!-- /TASK -->
+- [x] **FS05 – Add AGENTS.md** — brief agent catalogue & contribution tips.
 
 <!-- TASK:FS06 status=done -->
-* [x] Add an empty `reports/` directory for debrief files (commit with `.gitkeep` if needed).
-<!-- /TASK -->
+- [x] **FS06 – Empty reports/ dir** — committed with placeholder to track debriefs.
 
 <!-- TASK:FS07 status=pending -->
-* [ ] Add a `.gitignore` file covering Python artifacts (e.g. `__pycache__/`, `*.pyc`), the `node_modules/` directory, and any sensitive config or secret files.
-<!-- /TASK -->
+- [ ] **FS07 – Project `.gitignore`** — ignore `node_modules/`, `__pycache__/`, `.venv/`, logs, vendor wheels.
 
-<!-- TASK:FS08 status=pending -->
-* [ ] Write a concise `README.md` covering the project’s purpose, how to run the bootstrap script, and required environment variables (e.g. `OPENAI_API_KEY`, `GITHUB_PERSONAL_ACCESS_TOKEN`). Also note that after setup the agent runs inside the sandbox with no direct internet access.
-<!-- /TASK -->
+<!-- TASK:FS08 status=done -->
+- [x] **FS08 – Write README** — purpose, bootstrap, offline caveats, env vars.
 
 <!-- TASK:FS09 status=pending -->
-* [ ] Provide `mcp_servers/run_filesystem.sh` that runs `npx -y @modelcontextprotocol/server-filesystem /workspace` to expose the Filesystem MCP.
-<!-- /TASK -->
+- [ ] **FS09 – `run_filesystem.sh`** — one-liner script to start Filesystem MCP on port 8787.
 
 <!-- TASK:FS10 status=pending -->
-* [ ] Provide `mcp_servers/run_github.sh` that runs `npx -y @modelcontextprotocol/server-github` with `GITHUB_PERSONAL_ACCESS_TOKEN` exported for GitHub MCP access.
-<!-- /TASK -->
+- [ ] **FS10 – `run_github.sh`** — script to start GitHub MCP (uses `GITHUB_PERSONAL_ACCESS_TOKEN`) on port 8788.
 
 <!-- TASK:FS11 status=pending -->
-* [ ] Document (in README or separate note) how optional community MCP servers (e.g. Cloudflare) can be installed and launched only when required.
-<!-- /TASK -->
+- [ ] **FS11 – Optional MCP docs** — new `docs/optional_mcp.md` listing extra servers & env vars.
 
 <!-- TASK:FS12 status=pending -->
-* [ ] Implement `dev_agent.py` as a minimal ADK agent using `LiteLlm(model="openai/codex-mini-latest")`, placeholder system prompt, and `tools=[]`.
-<!-- /TASK -->
+- [ ] **FS12 – Minimal ADK agent** — instantiate `DevAgent` with LiteLLM (model `openai/codex-mini-latest`).
 
 <!-- TASK:FS13 status=pending -->
-* [ ] Add a clear module-level docstring to `dev_agent.py` explaining purpose and how to extend/subclass for specialised roles.
-<!-- /TASK -->
+- [ ] **FS13 – Agent docstring** — explain extension points & tool wiring in `dev_agent.py`.
 
 <!-- TASK:FS14 status=pending -->
-* [ ] Create a `.github/workflows/bootstrap.yml` workflow that checks out the repo on a macOS runner (Apple Silicon), runs `scripts/bootstrap.sh`, and fails on any error. Optionally include a second job on Ubuntu to verify Linux compatibility.
-<!-- /TASK -->
+- [ ] **FS14 – CI bootstrap workflow** — `.github/workflows/bootstrap.yml` (macOS + Ubuntu) runs bootstrap.
 
 <!-- TASK:FS15 status=pending -->
-* [ ] Implement a parser that scans this file for `<!-- TASK:* status=pending -->` blocks and extracts each task’s ID + text.
-<!-- /TASK -->
+- [ ] **FS15 – Roadmap parser** — code that lists `status=pending` tasks from this file.
 
 <!-- TASK:FS16 status=pending -->
-* [ ] Add logic that updates a task’s comment line from `status=pending` → `status=in_progress` → `status=done`.
-<!-- /TASK -->
+- [ ] **FS16 – Status updater** — helper to flip `status=in_progress/done` in place.
 
 <!-- TASK:FS17 status=pending -->
-* [ ] Register Filesystem MCP tools with the dev agent so it can read/write project files autonomously.
-<!-- /TASK -->
+- [ ] **FS17 – Filesystem tool** — add ADK tool pointing at `http://localhost:8787`.
 
 <!-- TASK:FS18 status=pending -->
-* [ ] Register GitHub MCP tools with the dev agent so it can commit, push, and open PRs from inside the sandbox.
-<!-- /TASK -->
+- [ ] **FS18 – GitHub tool** — add ADK tool for commits/PRs via `http://localhost:8788`.
 
 <!-- TASK:FS19 status=pending -->
-* [ ] Orchestrate the execution loop in a new Python script (e.g. `scripts/run_tasks.py`):  
-  1. Load the next pending task.  
-  2. Invoke the `dev_agent` to perform the task using its tools.  
-  3. Capture the completion signal or handle if no further actions remain.
-<!-- /TASK -->
+- [ ] **FS19 – Task loop** — `scripts/run_tasks.py` pulls first pending task, invokes agent, updates status.
 
 <!-- TASK:FS20 status=pending -->
-* [ ] After completing a task, use the GitHub tool to create a PR on a new branch named after the task ID; include a descriptive title and body.
-<!-- /TASK -->
+- [ ] **FS20 – Auto-PR** — after edits, push branch `capx/FSxx-slug` & open PR with template.
 
 <!-- TASK:FS21 status=pending -->
-* [ ] Generate `reports/NNN_debrief.md` summarising what was done, why, and any follow-ups.
-<!-- /TASK -->
+- [ ] **FS21 – Debrief file** — agent writes `reports/FSxx_debrief.md` summarising work.
 
 <!-- TASK:FS22 status=pending -->
-* [ ] Inject the debrief content (or link) into the PR description/comment so human reviewers get full context.
-<!-- /TASK -->
+- [ ] **FS22 – Debrief in PR** — embed or link the debrief in the PR description.
 
 <!-- TASK:FS23 status=pending -->
-* [ ] Add optional MCP integrations (e.g. Cloudflare Workers) behind feature flags; load only when a task requires them.
-<!-- /TASK -->
+- [ ] **FS23 – Search tool integration** — optional MCP server + ADK tool for doc/code search.
 
 <!-- TASK:FS24 status=pending -->
-* [ ] Expand the agent’s toolset (e.g. Google Search using `GOOGLE_API_KEY`) via the ADK tool interface; load tools lazily to keep runtime lean.
-<!-- /TASK -->
+- [ ] **FS24 – Debug tool integration** — stack-trace analyser MCP & tool (optional, behind feature flag).
 
 <!-- TASK:FS25 status=pending -->
-* [ ] Implement session memory so the agent can retain context across tasks via ADK’s state management.
-<!-- /TASK -->
+- [ ] **FS25 – Session memory** — persist last N debriefs to JSON; feed them into agent context.
 
 <!-- TASK:FS26 status=pending -->
-* [ ] Introduce additional specialised agents (tester, docs, planner) coordinated via ADK multi-agent orchestration.
-<!-- /TASK -->
+- [ ] **FS26 – Planner → Engineer → Verifier** — multi-agent roles, handshake schema.
 
 <!-- TASK:FS27 status=pending -->
-* [ ] Add unit tests, CI safety checks, and guardrails (e.g. prevent destructive file ops); refine prompts/few-shots for quality and alignment.
-<!-- /TASK -->
+- [ ] **FS27 – Unit tests & safety rails** — pytest smoke tests, Ruff/Black CI enforcement, write-whitelist.
+
+<!-- TASK:FS28 status=pending -->
+- [ ] **FS28 – Pluggable model backend** — LiteLLM config file to swap Codex with local model easily.
+
+<!-- TASK:FS29 status=pending -->
+- [ ] **FS29 – Natural-language goal intake** — CLI or API endpoint that converts a plain-English goal into FS-tasks.
+
+---
