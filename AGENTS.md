@@ -24,7 +24,7 @@
 5. Human merges the pull request once all checks pass.
 
 ## Style & validation
-- - Use Python 3.11 syntax, black + isort defaults (to be added later).
+- - Use Python 3.12-compatible syntax (Ubuntu 24.04 default) and Black formatting (isort rules will be added later).
 - - All shell scripts must be Unix-LF and executable (`chmod +x`).
 - - Unit-tests will be introduced in later tasks; keep code modular.
 - Run `ruff check --fix && black . && bandit -r .` before commit.
@@ -34,7 +34,7 @@
 ## Pull-Request Guidelines
 
 ### Branch name
-`codex/task-<ID>-<slug>`
+`capx/FS<ID>-<slug>`
 
 ### PR title
 `[FS<ID>] <imperative verb phrase>`  (≤ 60 chars)
