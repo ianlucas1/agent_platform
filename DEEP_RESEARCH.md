@@ -25,19 +25,19 @@ This guide distills every hard-won lesson about running Deep Research and Codex 
 
 Deep Research should **verify repo state before planning**. Paste the skeleton below into a Codex task whenever major structure or tooling may have changed. Adjust assumptions as needed.
 
-# 🔍  Assumptions-check Task
+### 🔍  Assumptions-check Task
 
-# Instructions:
+#### Instructions:
 
-# 1. Inspect the main branch.
+#### 1. Inspect the main branch.
 
-# 2. Respond in a MARKDOWN table:
+#### 2. Respond in a MARKDOWN table:
 
-# | # | PASS/FAIL | Evidence |
+#### | # | PASS/FAIL | Evidence |
 
-# 3. No code changes; read-only.
+#### 3. No code changes; read-only.
 
-# 4. End with the word “Done”.
+#### 4. End with the word “Done”.
 
 ## Assumptions
 
