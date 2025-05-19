@@ -135,5 +135,3 @@ Prompt Codex to write a brief debrief:
 * Support Codex running in headless mode with env and SOP preloaded
 
 Updated 2025-05-20
-
----
