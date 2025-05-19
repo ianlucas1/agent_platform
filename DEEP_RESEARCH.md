@@ -1,6 +1,5 @@
 ### 🧠 `DEEP_RESEARCH.md`
 
-```markdown
 # Deep Research – Standard Operating Procedures  
 *codex_agent_platform · established 2025-05-19*
 
@@ -26,8 +25,6 @@ This guide distills every hard-won lesson about running Deep Research and Codex 
 
 Deep Research should **verify repo state before planning**. Paste the skeleton below into a Codex task whenever major structure or tooling may have changed. Adjust assumptions as needed.
 
-```
-
 # 🔍  Assumptions-check Task
 
 # Instructions:
@@ -52,8 +49,6 @@ Deep Research should **verify repo state before planning**. Paste the skeleton b
 6. mcp\_servers/\*.sh are executable.
 7. agents/dev\_agent.py imports from google.adk and returns "pong".
 8. NO\_NET=1 is exported at end of bootstrap.
-
-```
 
 If any row **FAIL**s, fix the repo **or the assumption** before proceeding with planning.
 
@@ -84,16 +79,12 @@ If any row **FAIL**s, fix the repo **or the assumption** before proceeding with 
 
 ## 5 ▪ Prompt checklist (quick copy)
 
-```
-
 * Mark previous FS task done in ROADMAP\_TODO.md.
 * Single clear goal (one FS task).
 * List acceptance bullets (objectively testable).
 * Branch name: capx/FS<ID>-slug.
 * Include ruff, black, bandit (and pytest if present).
 * End with “# Begin.” to cue Codex.
-
-````
 
 ---
 
@@ -125,7 +116,6 @@ If any row **FAIL**s, fix the repo **or the assumption** before proceeding with 
 3. **End with:**  
    ```bash
    # Begin.
-````
 
 ---
 
@@ -193,7 +183,3 @@ If any row **FAIL**s, fix the repo **or the assumption** before proceeding with 
 ---
 
 *Updated 2025-05-20.*
-
-```
-
----
