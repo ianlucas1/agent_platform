@@ -31,11 +31,11 @@ Legend
 <!-- TASK:FS08 status=done -->
 - [x] **FS08 – Write README** — purpose, bootstrap, offline caveats, env vars.
 
-<!-- TASK:FS09 status=pending -->
-- [ ] **FS09 – `run_filesystem.sh`** — one-liner script to start Filesystem MCP on port 8787.
+<!-- TASK:FS09 status=done -->
+- [x] **FS09 – `run_filesystem.sh`** — one-liner script to start Filesystem MCP on port 8787.
 
-<!-- TASK:FS10 status=pending -->
-- [ ] **FS10 – `run_github.sh`** — script to start GitHub MCP (uses `GITHUB_PERSONAL_ACCESS_TOKEN`) on port 8788.
+<!-- TASK:FS10 status=done -->
+- [x] **FS10 – `run_github.sh`** — script to start GitHub MCP (uses `GITHUB_PERSONAL_ACCESS_TOKEN`) on port 8788.
 
 <!-- TASK:FS11 status=pending -->
 - [ ] **FS11 – Optional MCP docs** — new `docs/optional_mcp.md` listing extra servers & env vars.
