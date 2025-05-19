@@ -28,6 +28,7 @@ elif [[ "$OS" == "Darwin" ]]; then
     for pkg in python3 node; do
       brew list "$pkg" >/dev/null 2>&1 || brew install "$pkg"
     done
+    export PIP_BREAK_SYSTEM_PACKAGES=1  # macOS Homebrew pip guard (PEP 668)
   else
     echo "❌  Homebrew not found; install python3 & node manually." >&2
     exit 1
