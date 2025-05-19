@@ -1,0 +1,24 @@
+name: bootstrap
+
+on: [push, pull_request]
+
+jobs:
+  bootstrap:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Ensure bootstrap executable
+        run: chmod +x scripts/bootstrap.sh
+        shell: bash
+      - name: Run bootstrap
+        run: scripts/bootstrap.sh
+        shell: bash
+      - name: Run linters
+        run: |
+          ruff check .
+          black --check .
+          bandit -r .
+        shell: bash
