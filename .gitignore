@@ -1,0 +1,35 @@
+# ─── Python ─────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+.venv/
+env/
+venv/
+
+# Jupyter/IPython
+.ipynb_checkpoints/
+
+# ─── Node / MCP servers ─────────────────────────────────
+node_modules/
+npm-debug.log*
+*.tgz
+
+# ─── Build / tooling artefacts ──────────────────────────
+dist/
+build/
+*.log
+
+# Vendored wheels (kept locally for offline installs)
+vendor/**/*.whl
+vendor/**/*.tar.gz
+
+# ─── OS / Editor files ─────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# ─── Reports & agent outputs ───────────────────────────
+reports/*.log
+reports/*_scratch.*
