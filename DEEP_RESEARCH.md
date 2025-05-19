@@ -32,9 +32,9 @@ Deep Research should **verify repo state before planning**. Paste the skeleton b
 #### 1. Inspect the main branch.
 
 #### 2. Respond in a MARKDOWN table:
-
+```bash
 #### | # | PASS/FAIL | Evidence |
-
+```
 #### 3. No code changes; read-only.
 
 #### 4. End with the word “Done”.
@@ -116,7 +116,7 @@ If any row **FAIL**s, fix the repo **or the assumption** before proceeding with 
 3. **End with:**  
    ```bash
    # Begin.
-
+   ```
 ---
 
 ### 6.3 Output Review
