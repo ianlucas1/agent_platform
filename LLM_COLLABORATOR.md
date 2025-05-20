@@ -1,7 +1,7 @@
-# Deep Research – Standard Operating Procedures  
+# Collaborating LLM – Standard Operating Procedures  
 *codex_agent_platform*
 
-This guide distills the **current** best practices for collaborating with Codex web agents in this repository.  
+This guide distills the **current** best practices for collaborating with the human you are interacting with and Codex web agents.
 It is to remain version‑agnostic—no task numbers or dated milestones—so it remains valid as the roadmap evolves.
 
 ---
@@ -10,7 +10,7 @@ It is to remain version‑agnostic—no task numbers or dated milestones—so it
 
 **Before any agent prompt (Ask Mode or Code Mode):**
 
-1. Request the exact contents of the *environment‑setup script* configured in the Codex UI so assumptions reflect the live sandbox.
+1. From the human collaborator, rquest the exact contents of the *environment‑setup script* configured in the Codex UI so assumptions reflect the live sandbox.
 
 ---
 
@@ -71,15 +71,15 @@ Templates live in **docs/prompt_templates**:
 
 ## 6 Codex Task SOP – Full Workflow
 
-| Step | Who | Action |
-|------|-----|--------|
-| **0. Provide setup script** | Human | Paste current environment‑setup script. |
-| **1. Assumptions check** | Codex | Use template; human reviews table. |
-| **2. Write task prompt** | Human | Derive from `tasking.md`; include branch, patches, tests, `echo DONE`. |
-| **3. Codex runs Code Mode** | Codex | Shows diff, lint/test output, ends **DONE**. |
-| **4. Push & PR** | Human | Click **Push ▾ / Create PR**; watch CI. |
-| **5. Optional doc sync** | Codex or Human | Update README.md, AGENTS.md, DEEP_RESEARCH.md to reflect work done. |
-| **6. Optional debrief** | Codex | Save `reports/<task>_debrief.md` (what changed, assumptions, limits). |
+| Step | Actor | What happens |
+|------|-------|--------------|
+| **0 Provide setup script** | Human | Paste the current environment‑setup script. |
+| **1 Assumptions check** | LLM → Codex (Ask Mode) | LLM drafts assumptions prompt; human submits it; copies table back for LLM review. |
+| **2 Write task prompt** | LLM | Drafts Code Mode prompt using *tasking.md*; human downloads `.txt`. |
+| **3 Codex Code Mode run** | Human → Codex | Human pastes prompt; after Codex finishes, human supplies screenshot + `patch.txt` + `logs.txt` to LLM for review. |
+| **4 Push & PR / CI** | Human | If diffs look good, click **Push ▾ / Create PR**, watch CI; report failures back to LLM for fixes. |
+| **5 Optional doc sync** | Codex or Human | LLM drafts doc patches (or full overwrites) as `.txt`; Codex or human applies them. |
+| **6 Optional debrief** | LLM | Generate `reports/<task>_debrief.md` as `.txt`; human commits with supplied message. |
 
 ---
 
