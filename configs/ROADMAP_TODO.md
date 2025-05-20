@@ -44,7 +44,7 @@ Legend
 - [x] **FS12 – Minimal ADK agent** — instantiate `DevAgent` with LiteLLM (model `openai/codex-mini-latest`).
 
 <!-- TASK:FS13 status=pending -->
-- [ ] **FS13 – Agent docstring** — explain extension points & tool wiring in `dev_agent.py`.
+- [x] **FS13 – Agent docstring** — explain extension points & tool wiring in `dev_agent.py`.
 
 <!-- TASK:FS14 status=done -->
 - [x] **FS14 – CI bootstrap workflow** — `.github/workflows/bootstrap.yml` (macOS + Ubuntu) runs bootstrap.
