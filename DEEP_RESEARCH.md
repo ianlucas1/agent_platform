@@ -156,3 +156,11 @@ Prompt Codex to write a brief debrief:
 * Support Codex running in headless mode with env and SOP preloaded
 
 Updated 2025-05-20
+
+### UI & Workflow Tips  *(added after FS15)*
+- **Assumptions-check stage** – run only on `main`; avoid any branch-creation hints.  
+  Create the feature branch in the *implementation* prompt to keep SOP stages atomic.
+- **Codex Push controls** – branches created inside a Codex task and prefixed  
+  `codex/…` automatically expose the **Push ▾ / Create PR** buttons.
+  If a task ends with “unknown error” but a commit exists, run a no-op follow-up  
+  task (or use the Push menu) to surface the diff and push the branch.
