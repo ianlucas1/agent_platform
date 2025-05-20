@@ -80,6 +80,7 @@ Agent.run = lambda self, p: "pong"  # avoid live calls while NO_NET=1
 <command list>
 ```
 * Result: <green output / exit 0>
+```
 
 ## References
 

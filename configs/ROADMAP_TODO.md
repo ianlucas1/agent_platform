@@ -49,8 +49,8 @@ Legend
 <!-- TASK:FS14 status=done -->
 - [x] **FS14 – CI bootstrap workflow** — `.github/workflows/bootstrap.yml` (macOS + Ubuntu) runs bootstrap.
 
-<!-- TASK:FS14.5 status=pending -->
-- [ ] **FS14.5 – Repo hygiene & onboarding prep**
+<!-- TASK:FS14.5 status=done -->
+- [x] **FS14.5 – Repo hygiene & onboarding prep**
     • Enforce +x mode on all shell scripts via Git
     • Add LICENSE file to enable external contributions
     • Create lockfiles for Python and Node dependencies (e.g. requirements.lock, package-lock.json)
