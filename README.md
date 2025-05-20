@@ -47,7 +47,9 @@ Run `python scripts/parse_roadmap.py` to see tasks with `status=pending`.
 * Pass Ruff · Black · Bandit linters (and `pytest -q` once tests exist) before committing.  
 * Update docs and tick the roadmap when you complete a task.
 
-See **docs/prompt_templates/** for ready‑made assumption‑check and tasking prompts.
+* See **docs/prompt_templates/** for ready‑made assumption‑check and tasking prompts.
+* See docs/knowledge/mcp_servers.md for a quick guide to starting the local MCP servers.
+* See docs/lessons/README.md for a timeline of project lessons & retrospectives.
 
 ---
 
