@@ -104,4 +104,22 @@ Legend
 <!-- TASK:FS29 status=pending -->
 - [ ] **FS29 – Natural-language goal intake** — CLI or API endpoint that converts a plain-English goal into FS-tasks.
 
+<!-- TASK:FS30 status=pending -->
+- [ ] **FS30 – Plugin Discovery** — Detect opportunities to replace custom code with MIT/Apache libraries.
+
+<!-- TASK:FS31 status=pending -->
+- [ ] **FS31 – Plugin Sandbox** — Safely install & test candidate plugins in isolated env/branch.
+
+<!-- TASK:FS32 status=pending -->
+- [ ] **FS32 – Plugin Benchmark** — Compare plugin performance & correctness vs. existing implementation.
+
+<!-- TASK:FS33 status=pending -->
+- [ ] **FS33 – Auto‑Wrap Integration** — Refactor code to use approved plugin via wrapper/adapter.
+
+<!-- TASK:FS34 status=pending -->
+- [ ] **FS34 – PR Bot Automation** — Bot manages plugin‑integration PRs; auto‑merge on green CI per policy.
+
+<!-- TASK:FS35 status=pending -->
+- [ ] **FS35 – Nightly “Borg” Run** — Scheduled job runs agent in maintenance mode to assimilate improvements.
+
 ---
