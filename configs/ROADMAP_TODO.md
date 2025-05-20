@@ -63,7 +63,7 @@ Legend
 - [x] **FS15 – Roadmap parser** — code that lists `status=pending` tasks from this file. _(done 2025-05-20)_
 
 <!-- TASK:FS16 status=pending -->
-- [ ] **FS16 – Status updater** — helper to flip `status=in_progress/done` in place.
+- [x] **FS16 – Status updater** — helper to flip `status=in_progress/done` in place.
 
 <!-- TASK:FS17 status=pending -->
 - [ ] **FS17 – Filesystem tool** — add ADK tool pointing at `http://localhost:8787`.
