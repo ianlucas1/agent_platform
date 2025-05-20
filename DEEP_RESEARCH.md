@@ -2,7 +2,7 @@
 *codex_agent_platform*
 
 This guide distills the **current** best practices for collaborating with Codex web agents in this repository.  
-It is version‑agnostic—no task numbers or dated milestones—so it remains valid as the roadmap evolves.
+It is to remain version‑agnostic—no task numbers or dated milestones—so it remains valid as the roadmap evolves.
 
 ---
 
@@ -10,8 +10,7 @@ It is version‑agnostic—no task numbers or dated milestones—so it remains v
 
 **Before any agent prompt (Ask Mode or Code Mode):**
 
-1. Copy the exact contents of the *environment‑setup script* configured in the Codex UI.  
-2. Provide it verbatim to the LLM so assumptions reflect the live sandbox.
+1. Request the exact contents of the *environment‑setup script* configured in the Codex UI so assumptions reflect the live sandbox.
 
 ---
 
