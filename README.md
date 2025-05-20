@@ -35,8 +35,15 @@ flowchart LR
 
 ## Roadmap
 
-Project progress lives in **`configs/ROADMAP_TODO.md`**.  
-Run `python scripts/parse_roadmap.py` to see tasks with `status=pending`.
+High\-level roadmap & vision: **docs/vision_roadmap.md**
+Detailed task list: **docs/todo_tasks.md**
+
+To view current progress programmatically:
+
+```bash
+python scripts/parse_roadmap.py                # table view
+python scripts/parse_roadmap.py --format json  # JSON view
+```
 
 ---
 
