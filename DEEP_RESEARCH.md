@@ -162,5 +162,9 @@ Updated 2025-05-20
   Create the feature branch in the *implementation* prompt to keep SOP stages atomic.
 - **Codex Push controls** – branches created inside a Codex task and prefixed  
   `codex/…` automatically expose the **Push ▾ / Create PR** buttons.
-  If a task ends with “unknown error” but a commit exists, run a no-op follow-up  
+  If a task ends with “unknown error” but a commit exists, run a no-op follow-up
   task (or use the Push menu) to surface the diff and push the branch.
+
+See **docs/prompt_templates/README.md** for copy-paste instructions.  
+For long prompts, generate a downloadable `.txt` via `python_user_visible`
+to bypass ChatGPT UI escaping.
