@@ -13,10 +13,12 @@ cd my-app
 
 # 2. One-shot environment setup
 ./scripts/bootstrap.sh          # installs Python, Node, ADK (v0.5.0), MCP servers
+```
 
-# 3. First autonomous run (offline-safe)
-NO_NET=1 python scripts/run_tasks.py --max-tasks 1
-````
+```mermaid
+flowchart LR
+  Planner --> Coder --> Reviewer
+```
 
 | Env var                        | Purpose                                                      | Required |
 | ------------------------------ | ------------------------------------------------------------ | -------- |
@@ -34,7 +36,7 @@ NO_NET=1 python scripts/run_tasks.py --max-tasks 1
 | ------------------------- | --------------------------------------------------------- |
 | `agents/`                 | AI agent code (starting with `dev_agent.py`)              |
 | `configs/ROADMAP_TODO.md` | Machine-readable task queue (FS01 … FS27)                 |
-| `scripts/`                | `bootstrap.sh`, `run_tasks.py`, helper scripts            |
+| `scripts/`                | `bootstrap.sh` and helper scripts            |
 | `mcp_servers/`            | launchers for Filesystem & GitHub MCP servers             |
 | `reports/`                | `NNN_debrief.md` files the agent writes after each task   |
 | `docs/`                   | Lessons learned, reference dossiers, `offline_setup.md`   |
@@ -44,7 +46,7 @@ NO_NET=1 python scripts/run_tasks.py --max-tasks 1
 
 ## Roadmap status (20 May 2025)
 
-* **Completed:** FS01–FS14 (bootstrap, agent stub, CI setup)
+* **Completed:** FS01–FS14.5 (bootstrap, agent stub, CI setup)
 * **Next up:** FS15 roadmap parser, FS16 status updater
 * Live queue: see [`configs/ROADMAP_TODO.md`](configs/ROADMAP_TODO.md)
 

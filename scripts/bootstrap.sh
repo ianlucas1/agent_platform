@@ -10,6 +10,7 @@ OS="$(uname)"
 
 if [[ "$OS" == "Linux" ]]; then
   export DEBIAN_FRONTEND=noninteractive
+  export PIP_BREAK_SYSTEM_PACKAGES=1
   apt_get() {
     if [[ "$(id -u)" == 0 ]]; then
       apt-get -qq "$@"
@@ -51,10 +52,17 @@ done
 ###############################################################################
 if [[ -z "${NO_NET:-}" ]]; then
   # --- Core agent/runtime deps ------------------------------------------------
-  pip3 install --quiet google-adk litellm        # TODO: pin & vendor wheels
+  PY_REQ=requirements.txt
+  if [[ -f requirements-freeze.txt ]]; then
+    PY_REQ=requirements-freeze.txt
+  fi
+  pip3 install --quiet -r "$PY_REQ"
+
+  FS_VER=$(node -pe "require('./package.json').dependencies['@modelcontextprotocol/server-filesystem']")
+  GH_VER=$(node -pe "require('./package.json').dependencies['@modelcontextprotocol/server-github']")
   npm install -g --quiet --no-fund --omit=dev \
-    @modelcontextprotocol/server-filesystem \
-    @modelcontextprotocol/server-github
+    "@modelcontextprotocol/server-filesystem@$FS_VER" \
+    "@modelcontextprotocol/server-github@$GH_VER"
 
   # --- Dev-toolchain (formatters / linters) ----------------------------------
   if [[ -f requirements-dev.txt ]]; then
