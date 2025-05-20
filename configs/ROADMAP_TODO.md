@@ -1,5 +1,4 @@
-# Task Backlog  
-_Last updated 2025-05-18_
+# Task Backlog
 
 Legend  
 * `[ ]` pending   `[-]` in progress   `[x]` done  
@@ -51,13 +50,6 @@ Legend
 
 <!-- TASK:FS14.5 status=done -->
 - [x] **FS14.5 – Repo hygiene & onboarding prep**
-    • Enforce +x mode on all shell scripts via Git
-    • Add LICENSE file to enable external contributions
-    • Create lockfiles for Python and Node dependencies (e.g. requirements.lock, package-lock.json)
-    • Remove or implement scripts/run_tasks.py (currently referenced in README)
-    • Sync roadmap progress between README and ROADMAP_TODO.md
-    • Fix README formatting issues (e.g. triple backtick mismatch)
-    • Add visual Planner → Coder → Reviewer diagram to README or AGENTS.md
 
 <!-- TASK:FS15 status=done -->
 - [x] **FS15 – Roadmap parser** — code that lists `status=pending` tasks from this file. _(done 2025-05-20)_
@@ -104,22 +96,34 @@ Legend
 <!-- TASK:FS29 status=pending -->
 - [ ] **FS29 – Natural-language goal intake** — CLI or API endpoint that converts a plain-English goal into FS-tasks.
 
-<!-- TASK:FS30 status=pending -->
-- [ ] **FS30 – Plugin Discovery** — Detect opportunities to replace custom code with MIT/Apache libraries.
+<!-- TASK:FS30A status=pending -->
+- [ ] **FS30A – Deep Research wrapper tool** — call Deep Research via Assistants API or headless Playwright; store audit markdown in `reports/`.
+
+<!-- TASK:FS30B status=pending -->
+- [ ] **FS30B – Codex automation harness** — programmatic interface to Codex CLI/API or Playwright driver; triggers task prompt, saves patches & logs.
+
+<!-- TASK:FS30C status=pending -->
+- [ ] **FS30C – Orchestrator agent MVP** — orchestrates Deep‑Research wrapper and Codex harness; loops tasks until none pending, schedules next cycle.
+
+<!-- TASK:FS30D status=pending -->
+- [ ] **FS30D – Cost monitor & throttle** — track monthly token spend (Prometheus counter); halt cycles when spend nears budget cap.
 
 <!-- TASK:FS31 status=pending -->
-- [ ] **FS31 – Plugin Sandbox** — Safely install & test candidate plugins in isolated env/branch.
+- [ ] **FS31 – Plugin Discovery** — Detect opportunities to replace custom code with MIT/Apache libraries.
 
 <!-- TASK:FS32 status=pending -->
-- [ ] **FS32 – Plugin Benchmark** — Compare plugin performance & correctness vs. existing implementation.
+- [ ] **FS32 – Plugin Sandbox** — Safely install & test candidate plugins in isolated env/branch.
 
 <!-- TASK:FS33 status=pending -->
-- [ ] **FS33 – Auto‑Wrap Integration** — Refactor code to use approved plugin via wrapper/adapter.
+- [ ] **FS33 – Plugin Benchmark** — Compare plugin performance & correctness vs. existing implementation.
 
 <!-- TASK:FS34 status=pending -->
-- [ ] **FS34 – PR Bot Automation** — Bot manages plugin‑integration PRs; auto‑merge on green CI per policy.
+- [ ] **FS34 – Auto‑Wrap Integration** — Refactor code to use approved plugin via wrapper/adapter.
 
 <!-- TASK:FS35 status=pending -->
-- [ ] **FS35 – Nightly “Borg” Run** — Scheduled job runs agent in maintenance mode to assimilate improvements.
+- [ ] **FS35 – PR Bot Automation** — Bot manages plugin‑integration PRs; auto‑merge on green CI per policy.
+
+<!-- TASK:FS36 status=pending -->
+- [ ] **FS36 – Nightly “Borg” Run** — Scheduled job runs agent in maintenance mode to assimilate improvements.
 
 ---
