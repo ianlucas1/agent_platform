@@ -1,4 +1,4 @@
-# Codex Agent Platform
+# Agent Platform
 
 A **turn‑key starter kit** that pairs Google’s **Agent Development Kit** with a
 Planner → Coder → Reviewer workflow, pre‑wired CI, and a minimal SOP. Spin up
@@ -11,7 +11,7 @@ and passing CI on its own.
 
 ```bash
 # 1. Clone the template into your new project folder
-git clone https://github.com/ianlucas1/codex_agent_platform.git my-app
+git clone https://github.com/ianlucas1/agent_platform.git my-app
 cd my-app
 
 # 2. One‑shot environment setup

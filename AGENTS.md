@@ -1,7 +1,7 @@
 # Contributor Guide (AGENTS.md)
 
 This file gives Codex web agents and human collaborators a shared set of
-conventions for working in **codex_agent_platform**.  
+conventions for working in **agent_platform**.
 Read this first before opening a PR or drafting an agent prompt.
 
 ---
