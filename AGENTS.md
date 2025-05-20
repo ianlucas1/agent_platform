@@ -14,6 +14,10 @@
 * **Single clear goal** – one FS task (or tight bundle) only.
 * **Acceptance-criteria bullets** – each is objectively testable.
 * **Branch name** – `capx/FSxx-short-slug` (no spaces, lower-case).
+* *Codex UI note* – Branches created inside a Codex task and prefixed
+  `codex/...` automatically expose the **Push ▾ / Create PR** buttons.
+  If a task ends with “unknown error” but a commit exists, run a no-op
+  follow-up task (or use the Push menu) to push the branch.
 * **Include test commands in prompt** – `ruff check .`, `black --check .`, and `bandit -r .` (always required).
 * **End with `# Begin.`** – cues Codex to start the implementation chain-of-thought.
 
