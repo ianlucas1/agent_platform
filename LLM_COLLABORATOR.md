@@ -1,5 +1,5 @@
 # LLM Collaborator Guide – Standard Operating Procedures  
-*codex_agent_platform*
+*agent_platform*
 
 This document defines the evergreen SOP for a human ↔ LLM ↔ Codex workflow.  
 It is version‑agnostic and free of roadmap task numbers.
