@@ -38,7 +38,7 @@ Legend
 - [x] **FS10 – `run_github.sh`** — script to start GitHub MCP (uses `GITHUB_PERSONAL_ACCESS_TOKEN`) on port 8788.
 
 <!-- TASK:FS11 status=pending -->
-- [ ] **FS11 – Optional MCP docs** — new `docs/optional_mcp.md` listing extra servers & env vars.
+- [x] **FS11 – Optional MCP docs** — new `docs/optional_mcp.md` listing extra servers & env vars.
 
 <!-- TASK:FS12 status=done -->
 - [x] **FS12 – Minimal ADK agent** — instantiate `DevAgent` with LiteLLM (model `openai/codex-mini-latest`).
