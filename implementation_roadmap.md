@@ -1,4 +1,4 @@
-# CAP-X Implementation Roadmap (v2 – 2025-05-18)
+# Implementation Roadmap
 
 ## Who is this for?
 You – a solo developer who wants an autonomous dev agent without drowning in details.  
