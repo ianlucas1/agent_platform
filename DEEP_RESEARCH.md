@@ -151,6 +151,12 @@ Prompt Codex to write a brief debrief:
 
 8 Future Enhancements
 
+## Prompt Templates
+Templates live in **docs/prompt_templates**:  
+* assumptions_check.md – run on `main`; verify repo state; obtain current Codex setup script first.  
+* tasking.md – branch `codex/…`, patches, commit, `echo DONE`.  
+Generate prompts as downloadable `.txt` files (python_user_visible) with **no narrative** to avoid UI escaping issues.
+
 * Add a CI job to automatically check assumptions drift
 * Build memory tooling for summarizing agent debriefs
 * Support Codex running in headless mode with env and SOP preloaded
