@@ -5,7 +5,7 @@ This guide distills every hard-won lesson about running Deep Research and Codex 
 
 ---
 
-IMPORTANT: ## FS14.5 Required Before FS15+
+IMPORTANT: ## FS14.5 hygiene checklist (already satisfied)
 
 Before running any roadmap task FS15 or higher, the agent must verify that FS14.5 (Repo Hygiene & Onboarding Prep) is complete.
 
@@ -20,7 +20,10 @@ This includes:
 
 If FS14.5 is not marked complete, the agent should begin there instead.
 
-Reference: docs/fs14.5_plan.md
+Reference: docs/archive/fs14.5_plan.md
+
+✅ This repository already meets every item above; keep the list as a
+regression guard for future forks.
 
 ---
 
