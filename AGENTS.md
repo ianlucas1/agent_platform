@@ -1,107 +1,102 @@
-# Contributor Guide
+# Contributor Guide (AGENTS.md)
+
+This file gives Codex web agents and human collaborators a shared set of
+conventions for working in **codex_agent_platform**.  
+Read this first before opening a PR or drafting an agent prompt.
+
+---
 
 ## Repo layout (minimum viable)
-- `agents/` → ADK agent code (only `dev_agent.py` for now)
-- `configs/` → `ROADMAP_TODO.md` task queue, `AGENTS.md` (this file)
-- `scripts/` → `bootstrap.sh` (created by TASK FS01)
-- `mcp_servers/` / `reports/` / etc. created as tasks proceed
 
-## How Codex should work
+| Path | Purpose |
+|------|---------|
+| `agents/` | Small agent wrappers & helper code |
+| `configs/` | Roadmap, CI configs, etc. |
+| `scripts/` | Bootstrap & utility scripts |
+| `mcp_servers/` | Local Model‑Context‑Protocol servers |
+| `docs/` | SOP & prompt templates (**LLM_COLLABORATOR.md**, `prompt_templates/`) |
+| `reports/` | Per‑task debriefs |
+| `tests/`  | _(placeholder)_ unit/integ tests as they land |
 
-### Prompt checklist (what every Codex task prompt must include)
+---
 
-* **Mark the previous FS task done** – update `configs/ROADMAP_TODO.md` (`status=done`, checkbox ☑).
-* **Single clear goal** – one FS task (or tight bundle) only.
-* **Acceptance-criteria bullets** – each is objectively testable.
-* **Branch name** – `capx/FSxx-short-slug` (no spaces, lower-case).
-* *Codex UI note* – Branches created inside a Codex task and prefixed
-  `codex/...` automatically expose the **Push ▾ / Create PR** buttons.
-  If a task ends with “unknown error” but a commit exists, run a no-op
-  follow-up task (or use the Push menu) to push the branch.
-* **Include test commands in prompt** – `ruff check .`, `black --check .`, and `bandit -r .` (always required).
-* **End with `# Begin.`** – cues Codex to start the implementation chain-of-thought.
+## Branch naming
 
-1. Read the next **`status=pending`** task in `configs/ROADMAP_TODO.md`.
-2. Implement it inside the sandbox and stage the changes on a branch named `capx/FSxx-slug` (the **Push** button appears).
-3. Stop and present the diff — the **human clicks Push** to send the branch to GitHub.
-4. Human opens the pull request; CI runs.  If checks fail, the human may ask Codex to inspect logs and fix.
-5. Human merges the pull request once all checks pass.
+`codex/<task‑slug>` — always prefix with **`codex/`** so the Push ▾ / PR
+buttons appear in the Codex UI.
 
-### ADK quick-reference (dev_agent stubs)
+Examples:
 
-```python
-from google.adk import Agent
-from google.adk.models.lite_llm import LiteLlm
-# google-adk==0.3.1 is no longer available
-# Requires google-adk>=0.5.0 (check requirements.txt)
+* `codex/fix-bootstrap-perms`
+* `codex/roadmap-parser`
 
-model = LiteLlm(model="openai/codex-mini-latest")  # string, not LiteLLM()
-dev_agent = Agent(
-    name="DevAgent",
-    model=model,
-    instruction="You are DevAgent inside an offline sandbox.",
-    tools=[],         # no tools wired yet
-)
+---
 
-# Synchronous helper (for smoke-tests only)
-Agent.run = lambda self, p: "pong"  # avoid live calls while NO_NET=1
+## Commit message style
 
-## Style & validation
-- - Use Python 3.12-compatible syntax (Ubuntu 24.04 default) and Black formatting (isort rules will be added later).
-- - All shell scripts must be Unix-LF and executable (`chmod +x`).
-- - Unit-tests will be introduced in later tasks; keep code modular.
-- Run `ruff check --fix && black . && bandit -r .` before commit.
-- If you’re working **offline**, run `pip install -r requirements-dev.txt` once to cache the formatter/linter wheels, then use  
-  `ruff check --fix . && black . --check && bandit -r .` before committing.
+| Prefix | When to use |
+|--------|-------------|
+| `feat:` | new feature / script |
+| `fix:`  | bug fix |
+| `docs:` | documentation changes |
+| `chore:`| misc repo upkeep |
+| `ci:`   | CI config or workflow |
 
-## Pull-Request Guidelines
+---
 
-### Branch name
-`capx/FS<ID>-<slug>`
+## Contribution checklist (use in PR body)
 
-### PR title
-`[FS<ID>] <imperative verb phrase>`  (≤ 60 chars)
-
-### Commit-message prefixes
-| Prefix | Purpose |
-| ------ | ------- |
-| `feat:` | New feature or enhancement |
-| `fix:` | Bug fix |
-| `chore:` | Maintenance or tooling |
-
-### PR body template
 ```markdown
-## Summary
-<single sentence purpose>
+### Checklist
+- [ ] Branch name starts with codex/
+- [ ] Ruff / Black / Bandit exit 0
+- [ ] `pytest -q` (once tests exist) exits 0
+- [ ] Updated ROADMAP_TODO.md: tick completed task
+- [ ] Docs updated if behaviour changed
+```
 
-## Changes
-- Bullet list of key file additions / edits
-- Link to debrief file (e.g. `reports/NNN_debrief.md`)
+---
 
-## Testing
+## Style & tooling
+
+* **Python ≥ 3.12**; code must pass **Ruff**, **Black**, **Bandit**.  
+* Pre‑commit hook enforces executability of `*.sh` files.  
+* Use the prompt scaffolds in **`docs/prompt_templates`** when drafting
+  assumptions‑check or task prompts.
+
+---
+
+## Validating changes locally
+
 ```bash
-# commands run
-<command list>
+# lint
+ruff check .
+black --check .
+bandit -r .
+
+# tests (will be added incrementally)
+pytest -q
 ```
-* Result: <green output / exit 0>
+
+---
+
+## Finding pending roadmap tasks
+
+```bash
+python scripts/parse_roadmap.py            # Markdown table
+python scripts/parse_roadmap.py --format json | jq .
 ```
 
-## References
+---
 
-Closes FS<ID>
+## PR instructions
 
-## Codex-Cloud Constraints (#1–#10)
+* **Title:** `[<area>] <concise description>`  
+  Example: `[scripts] make bootstrap lock‑file aware`
+* **Body:** Include the *Contribution checklist* above.
+* After Codex run ends with `echo DONE`, click **Push ▾ → Create PR**,
+  wait for CI, then merge or fix.
 
-| #      | Reality of the sandbox                                         | Risk it creates                          | How to design tasks to cope / exploit                                                                    |
-| ------ | -------------------------------------------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| **1**  | `No outbound internet` after bootstrap (except GitHub via MCP) | Package installs or API calls can hang   | Pre-cache wheels/tarballs in bootstrap; embed docs under `docs/reference/`; avoid `curl`/`wget` in tasks |
-| **2**  | *Ephemeral VM* (workspace resets wipe storage)                 | Long jobs lose state                     | Write checkpoints to `reports/`; keep tasks ≤ 5 min; push branches early & often                         |
-| **3**  | *Single shared container* (no Docker-in-Docker)                | Services like Redis/Postgres unavailable | Use SQLite/TinyDB/DuckDB; abstract external services behind thin adapters                                |
-| **4**  | *Non-root user*                                                | Kernel modules/systemd off-limits        | Limit `apt-get` to essential packages in bootstrap; prefer user-space installs                           |
-| **5**  | *CPU-only, \~4 GB RAM*                                         | Heavy ML builds slow/fail                | Stick to lightweight models (e.g., codex-mini); cap pytest workers ≤ 2                                   |
-| **6**  | *Fixed port forwarding* (first 5 ports)                        | Port exhaustion                          | Reuse ports 8787+; kill servers after tests                                                              |
-| **7**  | *Integrated file explorer & diff*                              | Large binaries clutter UI                | `.gitignore` `node_modules/`, `.venv/`, artifacts; keep patches < 500 LOC                                |
-| **8**  | *Git UI favors linear history*                                 | Force-pushes confuse reviewers           | Use additive commits; branch names like `[FS##]-slug`                                                    |
-| **9**  | *No background cron*                                           | Automation loops die when tab closes     | Run loops with `--max-tasks N`; trigger via CI on each push                                              |
-| **10** | *30 min idle timeout*                                          | Lost terminal sessions                   | Autosave progress to `reports/`; break interactive debugging into small snippets                         |
+---
 
+_Last updated: 2025-05-20_
