@@ -12,7 +12,7 @@ git clone https://github.com/ianlucas1/codex_agent_platform.git my-app
 cd my-app
 
 # 2. One-shot environment setup
-./scripts/bootstrap.sh          # installs Python, Node, ADK (v0.5.0), MCP servers
+./scripts/bootstrap.sh   # installs Python, Node, ADK (v0.5.0), MCP servers
 # 3. List pending tasks
 python scripts/parse_roadmap.py
 ```

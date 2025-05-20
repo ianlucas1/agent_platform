@@ -59,8 +59,8 @@ Legend
     • Fix README formatting issues (e.g. triple backtick mismatch)
     • Add visual Planner → Coder → Reviewer diagram to README or AGENTS.md
 
-<!-- TASK:FS15 status=pending -->
-- [ ] **FS15 – Roadmap parser** — code that lists `status=pending` tasks from this file.
+<!-- TASK:FS15 status=done -->
+- [x] **FS15 – Roadmap parser** — code that lists `status=pending` tasks from this file. _(done 2025-05-20)_
 
 <!-- TASK:FS16 status=pending -->
 - [ ] **FS16 – Status updater** — helper to flip `status=in_progress/done` in place.
