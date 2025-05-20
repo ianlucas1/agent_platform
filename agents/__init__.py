@@ -1,1 +1,1 @@
-"""CAP-X agent package."""
+"""agent_platform package initialization."""
