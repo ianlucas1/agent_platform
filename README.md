@@ -1,19 +1,23 @@
 # Codex Agent Platform
 
-A **turn-key starter kit** that combines Google’s **Agent Developer Kit (ADK)** with local **Model-Context-Protocol (MCP)** servers so an OpenAI-backed agent can clone, build, and iteratively develop *any* project you point it at—opening pull-requests, writing debriefs, and passing CI on its own.
+A **turn‑key starter kit** that pairs Google’s **Agent Development Kit** with a
+Planner → Coder → Reviewer workflow, pre‑wired CI, and a minimal SOP. Spin up
+an LLM‑powered assistant capable of opening pull‑requests, writing debriefs,
+and passing CI on its own.
 
 ---
 
-## Quick-start
+## Quick‑start
 
 ```bash
 # 1. Clone the template into your new project folder
 git clone https://github.com/ianlucas1/codex_agent_platform.git my-app
 cd my-app
 
-# 2. One-shot environment setup
-./scripts/bootstrap.sh   # installs Python, Node, ADK (v0.5.0), MCP servers
-# 3. List pending tasks
+# 2. One‑shot environment setup
+./scripts/bootstrap.sh   # installs Python, Node, ADK, MCP servers
+
+# 3. List pending roadmap tasks
 python scripts/parse_roadmap.py
 ```
 
@@ -22,47 +26,38 @@ flowchart LR
   Planner --> Coder --> Reviewer
 ```
 
-| Env var                        | Purpose                                                      | Required |
-| ------------------------------ | ------------------------------------------------------------ | -------- |
-| `OPENAI_API_KEY`               | LLM calls via ADK / LiteLLM                                  | **Yes**  |
-| `GITHUB_PERSONAL_ACCESS_TOKEN` | Agent’s Git push + PRs                                       | **Yes**  |
-| `NO_NET=1`                     | Skip pip/npm downloads (Codex sandbox or fully offline mode) | Optional |
-
-> **Tip:** Outside the Codex cloud sandbox you can omit `NO_NET=1` and let the agent fetch packages live.
+| Env var            | Purpose                                             | Required |
+|--------------------|-----------------------------------------------------|----------|
+| `OPENAI_API_KEY`   | LLM calls via ADK / LiteLLM                         | ✅       |
+| `GITHUB_TOKEN`     | PR creation & comment bots (optional outside Codex) | optional |
 
 ---
 
-## Repository layout
+## Roadmap
 
-| Path                      | What lives here                                           |
-| ------------------------- | --------------------------------------------------------- |
-| `agents/`                 | AI agent code (starting with `dev_agent.py`)              |
-| `configs/ROADMAP_TODO.md` | Machine-readable task queue (FS01 … FS27)                 |
-| `scripts/`                | `bootstrap.sh` and helper scripts            |
-| `mcp_servers/`            | launchers for Filesystem & GitHub MCP servers             |
-| `reports/`                | `NNN_debrief.md` files the agent writes after each task   |
-| `docs/`                   | Lessons learned, reference dossiers, `offline_setup.md`   |
-| `AGENTS.md`               | Contributor guide + PR template & Codex-Cloud constraints |
+Project progress lives in **`configs/ROADMAP_TODO.md`**.  
+Run `python scripts/parse_roadmap.py` to see tasks with `status=pending`.
 
 ---
 
-## Roadmap status (20 May 2025)
+## Contributing
 
-* **Completed:** FS01–FS14.5 (bootstrap, agent stub, CI setup)
-* **Next up:** FS16 status updater
-* Live queue: see [`configs/ROADMAP_TODO.md`](configs/ROADMAP_TODO.md)
+* Follow the workflow & coding standards in **LLM_COLLABORATOR.md** and **AGENTS.md**.  
+* Branch names must start with `codex/…` so the Codex UI shows **Push ▾ / Create PR**.  
+* Pass Ruff · Black · Bandit linters (and `pytest -q` once tests exist) before committing.  
+* Update docs and tick the roadmap when you complete a task.
+
+See **docs/prompt_templates/** for ready‑made assumption‑check and tasking prompts.
 
 ---
 
 ## Offline & sandbox quirks
 
-Codex’s web IDE disables outbound network after the setup script.
-The repo ships with:
-
-* `scripts/bootstrap.sh` — installs all deps *before* the cutoff and respects `NO_NET=1`.
-* `docs/offline_setup.md` — how to pre-vendor wheels/tarballs if you need total air-gap.
-
-Outside Codex you can run the agent with full internet; these guard-rails simply ensure the same repo also works in the stricter sandbox.
+Codex’s sandbox disables outbound network after the setup script finishes.
+`scripts/bootstrap.sh` installs all dependencies **before** the cutoff and
+exports `NO_NET=1` so subsequent commands run offline.  
+Outside Codex you get full internet; the repo simply ensures the same code also
+works in the stricter sandbox.
 
 ---
 
