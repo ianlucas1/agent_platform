@@ -35,8 +35,10 @@ flowchart LR
 
 ## Roadmap
 
-Project progress lives in **`configs/ROADMAP_TODO.md`**.  
+Project progress lives in **`configs/ROADMAP_TODO.md`**.
 Run `python scripts/parse_roadmap.py` to see tasks with `status=pending`.
+Use `python scripts/status_updater.py <id> <status>` to flip a task to
+`in_progress` or `done`.
 
 ---
 
