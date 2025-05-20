@@ -23,6 +23,8 @@ The collaborating LLM embeds this script in the upcoming assumptions check.
 5. Include acceptance‑criteria bullets so Codex can demonstrate success.  
 6. Show lint/test output (ruff · black · bandit · pytest) in every Code Mode task.  
 7. Sandbox limits: CPU‑only, ≈4 GB RAM, **no outbound net once `NO_NET=1`**.
+8. Keep chat replies ≤ 100 words unless user explicitly requests depth.
+9. Offer *one* discrete task per message; never bundle multi-step sequences.
 
 ---
 
@@ -56,18 +58,19 @@ Runs on **main** only; returns a TRUE/FALSE evidence table.
 
 | Step | Actor | Action |
 |------|-------|--------|
-| **0 Setup script** | Human | Share current environment‑setup script (see Section 0). |
-| **1 Assumptions check** | LLM → Codex (Ask Mode) | LLM drafts prompt; human submits; copies table back for review. |
-| **2 Task prompt** | LLM | Drafts Code Mode prompt (`tasking.md`), saved as `.txt`. |
-| **3 Codex Code Mode** | Human → Codex | Paste prompt; after run, provide screenshot, `patch.txt`, and `logs.txt` to LLM. |
-| **4 Push & PR / CI** | Human | Click **Push ▾ / Create PR**; watch CI; report failures to LLM. |
-| **5 Optional doc sync** | Codex or Human | LLM supplies doc patches/overwrites as `.txt`; commit via Codex or manually. |
-| **6 Optional debrief** | LLM | Supply `reports/<task>_debrief.md` as `.txt`; human commits with provided message. |
+| **0 Setup script** | Human | Share current `bootstrap.sh` (environment‑setup) with LLM. |
+| **1 Assumptions check** | LLM → Codex (Ask Mode) | LLM drafts `.txt` prompt → human submits to Codex; copy result table back for review. |
+| **2 Task prompt** | LLM | Draft Code Mode prompt (`tasking.md` style) and save as `.txt`. |
+| **3 Codex Code Mode** | Human → Codex | Paste prompt; after run, share screenshot, `patch.txt`, `logs.txt` with LLM. |
+| **4 Push & PR / CI** | Human | Click **Push ▾ / Create PR**; monitor CI; report failures to LLM. |
+| **5 Doc sync (if needed)** | Codex or Human | Trigger when code changes outdate docs. LLM supplies `.txt` patch for affected docs only → commit on branch `codex/doc-sync-<slug>` with message `docs: sync <file> after <change>`. |
+| **6 Debrief (optional)** | LLM | Provide `reports/<task>_debrief.md` as `.txt`; human commits with given message. |
 
 ---
 
 ## 6 UI & Workflow Tips
 
+* Use terse, action-oriented language; reserve extended narrative for reports/debriefs.
 * Assumptions check stays on **main**; branch only in tasking prompt.  
 * **Push controls appear** when branch name starts with `codex/…` and task exits cleanly (`echo DONE`).  
   If “unknown error” hides the button but a commit exists, run a no‑op task or use Push menu.
