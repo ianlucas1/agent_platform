@@ -46,8 +46,8 @@ Legend
 <!-- TASK:FS13 status=pending -->
 - [ ] **FS13 – Agent docstring** — explain extension points & tool wiring in `dev_agent.py`.
 
-<!-- TASK:FS14 status=pending -->
-- [ ] **FS14 – CI bootstrap workflow** — `.github/workflows/bootstrap.yml` (macOS + Ubuntu) runs bootstrap.
+<!-- TASK:FS14 status=done -->
+- [x] **FS14 – CI bootstrap workflow** — `.github/workflows/bootstrap.yml` (macOS + Ubuntu) runs bootstrap.
 
 <!-- TASK:FS14.5 status=pending -->
 - [ ] **FS14.5 – Repo hygiene & onboarding prep**
