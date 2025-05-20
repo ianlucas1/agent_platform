@@ -3,6 +3,27 @@ codex\_agent\_platform · established 2025-05-19
 
 This guide distills every hard-won lesson about running Deep Research and Codex web agents in this repository. Follow it before drafting any new research prompt or technical roadmap.
 
+---
+
+IMPORTANT: ## FS14.5 Required Before FS15+
+
+Before running any roadmap task FS15 or higher, the agent must verify that FS14.5 (Repo Hygiene & Onboarding Prep) is complete.
+
+This includes:
+- Shell scripts are marked executable (`100755`) and pass `git ls-files -s`
+- Lockfiles exist for Python and Node dependencies
+- LICENSE file is present at repo root
+- `scripts/run_tasks.py` is removed or implemented
+- `ROADMAP_TODO.md` and `README.md` are in sync on task status
+- No formatting errors exist in the README quickstart block
+- The Planner → Coder → Reviewer flow is documented visually
+
+If FS14.5 is not marked complete, the agent should begin there instead.
+
+Reference: docs/fs14.5_plan.md
+
+---
+
 1 Golden Rules
 
 1. Start with an assumptions-check (section 2) – Keeps mental models in sync with the evolving codebase.
