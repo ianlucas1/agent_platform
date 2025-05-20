@@ -29,7 +29,7 @@ It is to remain version‑agnostic—no task numbers or dated milestones—so it
 ## 2 Assumptions‑Check Prompt Template
 
 See **docs/prompt_templates/assumptions_check.md** for a copy‑ready scaffold.  
-Always supply it to Codex as a downloadable `.txt` file—no narrative wrapper.
+Always supply it to the human collaborator as a downloadable `.txt` file—no narrative wrapper.
 
 *Run on* **main** only; no branch creation; result is a TRUE/FALSE table.
 
