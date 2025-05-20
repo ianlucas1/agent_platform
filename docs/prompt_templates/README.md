@@ -7,7 +7,7 @@
 
 ### Large prompts
 
-For long or complex prompts, generate a `.txt` file with
+For all prompts, generate a `.txt` file with
 `python_user_visible` and share the download link.  
 The human copies the file’s contents verbatim into Codex, avoiding UI
 escaping and comment‑prefix issues.
