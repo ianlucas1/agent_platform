@@ -1,4 +1,4 @@
-"""Minimal DevAgent implementation for CAP-X.
+"""Minimal DevAgent implementation for the agent_platform project.
 
 This module exposes a convenience ``get_dev_agent`` function that returns
 an ADK ``Agent`` instance backed by LiteLLM.  No tools are wired yet.

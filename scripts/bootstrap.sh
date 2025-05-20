@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# CAP-X bootstrap – install all toolchains while the network is still up
+# agent_platform bootstrap – install all toolchains while the network is still up
 set -euo pipefail
 trap 'echo "BOOTSTRAP FAILED on line $LINENO" >&2' ERR
 
