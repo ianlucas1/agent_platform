@@ -49,7 +49,7 @@ flowchart LR
 ## Roadmap status (20 May 2025)
 
 * **Completed:** FS01–FS14.5 (bootstrap, agent stub, CI setup)
-* **Next up:** FS15 roadmap parser, FS16 status updater
+* **Next up:** FS16 status updater
 * Live queue: see [`configs/ROADMAP_TODO.md`](configs/ROADMAP_TODO.md)
 
 ---
