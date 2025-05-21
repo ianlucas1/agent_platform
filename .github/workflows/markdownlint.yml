@@ -1,6 +1,7 @@
 name: markdown-lint
 
-on: [pull_request]
+on: 
+  pull_request:
 
 jobs:
   mdl:
@@ -11,5 +12,4 @@ jobs:
         with:
           config: .markdownlint-cli2.jsonc
           args: '**/*.md'
-
           
