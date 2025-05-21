@@ -19,6 +19,7 @@ jobs:
       - name: Run linters
         run: |
           ruff check . --fix --exit-zero
+          black .
           black --check .
           bandit -r .
       - name: Roadmap drift check
