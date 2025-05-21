@@ -62,8 +62,8 @@ Legend
 <!-- TASK:FS18 status=done -->
 - [x] **FS18 – GitHub tool** — add ADK tool for commits/PRs via `http://localhost:8788`.
 
-<!-- TASK:FS19 status=pending -->
-- [ ] **FS19 – Task loop** — `scripts/run_tasks.py` pulls first pending task, invokes agent, updates status.
+<!-- TASK:FS19 status=done -->
+- [x] **FS19 – Task loop** — `scripts/run_tasks.py` pulls first pending task, invokes agent, updates status.
 
 <!-- TASK:FS20 status=pending -->
 - [ ] **FS20 – Auto-PR** — after edits, push branch `capx/FSxx-slug` & open PR with template.
