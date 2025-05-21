@@ -4,6 +4,7 @@ FS23: Wrap OpenAI Deep Research tool to generate an implementation plan
 for roadmap tasks.
 """
 import os
+import re
 from dotenv import load_dotenv
 # TODO: import Deep Research client (e.g., OpenAI or other SDK)
 
@@ -16,11 +17,14 @@ def load_credentials():
     os.environ["DR_API_KEY"] = dr_key
 
 def parse_roadmap():
-    """
-    Read configs/ROADMAP_TODO.md and extract incomplete FS steps (FS23+).
-    Return list of (fs_number, description).
-    """
-    # TODO
+    fs_items = []
+    with open("configs/ROADMAP_TODO.md") as f:
+        for line in f:
+            # match unchecked FS steps ≥23
+            m = re.match(r"- \[ \] (FS(\d+)) – (.+)", line)
+            if m and int(m.group(2)) >= 23:
+                fs_items.append((m.group(1), m.group(3).strip()))
+    return fs_items
 
 def build_prompt(fs_list):
     """
