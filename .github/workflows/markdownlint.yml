@@ -9,4 +9,5 @@ jobs:
       - uses: actions/checkout@v4
       - uses: avto-dev/markdown-lint@v1
         with:
+          config: .markdownlint-cli2.jsonc
           args: '**/*.md'
