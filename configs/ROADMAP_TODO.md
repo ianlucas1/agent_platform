@@ -70,7 +70,7 @@ Legend
 * [x] Auto‑PR — after edits, push branch `capx/FSxx‑<slug>` & open PR with template.
 
 <!-- FS21 -->
-* [ ] Debrief file — agent writes `reports/FSxx_debrief.md` summarising work.
+* [x] Debrief file — agent writes `reports/FSxx_debrief.md` summarising work.
 
 <!-- FS22 -->
 * [ ] Debrief in PR — embed or link the debrief in the PR description.
