@@ -73,7 +73,7 @@ Legend
 * [x] Debrief file — agent writes `reports/FSxx_debrief.md` summarising work.
 
 <!-- FS22 -->
-* [ ] Debrief in PR — embed or link the debrief in the PR description.
+* [x] Debrief in PR — embed or link the debrief in the PR description.
 
 <!-- FS23 -->
 * [ ] Register remote MCP servers — add `configs/mcp_servers.yaml` (Filesystem & GitHub endpoints).
