@@ -36,13 +36,13 @@ Legend
 <!-- TASK:FS10 status=done -->
 - [x] **FS10 – `run_github.sh`** — script to start GitHub MCP (uses `GITHUB_PERSONAL_ACCESS_TOKEN`) on port 8788.
 
-<!-- TASK:FS11 status=pending -->
+<!-- TASK:FS11 status=done -->
 - [x] **FS11 – Optional MCP docs** — new `docs/optional_mcp.md` listing extra servers & env vars.
 
 <!-- TASK:FS12 status=done -->
 - [x] **FS12 – Minimal ADK agent** — instantiate `DevAgent` with LiteLLM (model `openai/codex-mini-latest`).
 
-<!-- TASK:FS13 status=pending -->
+<!-- TASK:FS13 status=done -->
 - [x] **FS13 – Agent docstring** — explain extension points & tool wiring in `dev_agent.py`.
 
 <!-- TASK:FS14 status=done -->
@@ -54,8 +54,8 @@ Legend
 <!-- TASK:FS15 status=done -->
 - [x] **FS15 – Roadmap parser** — code that lists `status=pending` tasks from this file. _(done 2025-05-20)_
 
-<!-- TASK:FS16 status=pending -->
-- [-] **FS16 – Status updater** — helper to flip `status=in_progress/done` in place.
+<!-- TASK:FS16 status=done -->
+- [x] **FS16 – Status updater** — helper to flip `status=in_progress/done` in place.
 
 <!-- TASK:FS17 status=pending -->
 - [ ] **FS17 – Filesystem tool** — add ADK tool pointing at `http://localhost:8787`.
