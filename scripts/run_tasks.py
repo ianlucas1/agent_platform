@@ -14,8 +14,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 ROADMAP = ROOT / "configs" / "ROADMAP_TODO.md"
 
 PATTERN = re.compile(
-    r"<!-- TASK:(FS\d+) status=pending -->"
-    r"(?:\s*- \[ ] \*\*(.*?)\*\*)",
+    r"<!-- TASK:(FS\d+) status=pending -->" r"(?:\s*- \[ ] \*\*(.*?)\*\*)",
 )
 
 
