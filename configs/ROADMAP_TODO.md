@@ -76,7 +76,7 @@ Legend
 * [x] Debrief in PR — embed or link the debrief in the PR description.
 
 <!-- FS23 -->
-* [ ] Register remote MCP servers — add `configs/mcp_servers.yaml` (Filesystem & GitHub endpoints).
+* [x] Register remote MCP servers — add `configs/mcp_servers.yaml` (Filesystem & GitHub endpoints).
 
 <!-- FS24 -->
 * [ ] Responses‑API client wrapper — helper that calls Deep‑Research/Responses API with `tool_server_url`.
