@@ -23,8 +23,10 @@ The collaborating LLM embeds this script in the upcoming assumptions check.
 5. Include acceptance‑criteria bullets so Codex can demonstrate success.  
 6. Show lint/test output (ruff · black · bandit · pytest) in every Code Mode task.  
 7. Sandbox limits: CPU‑only, ≈4 GB RAM, **no outbound net once `NO_NET=1`**.
-8. Keep chat replies ≤ 100 words unless user explicitly requests depth.
-9. Offer *one* discrete task per message; never bundle multi-step sequences.
+8. Codex always spawns on the **`main`** branch — never create branch‑rename tasks.  
+9. Keep chat replies ≤ 100 words unless the user explicitly requests depth.  
+10. Offer *one* discrete task per message; never bundle multi‑step sequences.  
+11. **At the start of any complex FS task, provide a concise bullet list of all planned sub‑tasks (e.g., B1–B6) with one‑sentence descriptions for situational awareness.**
 
 ---
 
@@ -65,6 +67,7 @@ Runs on **main** only; returns a TRUE/FALSE evidence table.
 | **4 Push & PR / CI** | Human | Click **Push ▾ / Create PR**; monitor CI; report failures to LLM. |
 | **5 Doc sync (if needed)** | Codex or Human | Trigger when code changes outdate docs. LLM supplies `.txt` patch for affected docs only → commit on branch `codex/doc-sync-<slug>` with message `docs: sync <file> after <change>`. |
 | **6 Debrief (optional)** | LLM | Provide `reports/<task>_debrief.md` as `.txt`; human commits with given message. |
+| **7 Roadmap drift CI** | CI | `.github/workflows/bootstrap.yml` runs `scripts/check_roadmap_sync.py`; PRs fail if ROADMAP comments and checkboxes diverge. |
 
 ---
 
