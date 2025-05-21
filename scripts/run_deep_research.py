@@ -9,8 +9,11 @@ from dotenv import load_dotenv
 
 def load_credentials():
     load_dotenv()
-    # e.g. DR_API_KEY = os.getenv("DEEP_RESEARCH_API_KEY")
-    # Save into a client object or env var
+    dr_key = os.getenv("DEEP_RESEARCH_API_KEY")
+    if not dr_key:
+        raise RuntimeError("DEEP_RESEARCH_API_KEY not set in environment")
+    # Expose for downstream calls (or initialize your Deep Research client here)
+    os.environ["DR_API_KEY"] = dr_key
 
 def parse_roadmap():
     """
