@@ -7,7 +7,10 @@ and prints its FS number + title. (Editing comes later.)
 import re, pathlib, sys, textwrap
 
 ROADMAP = pathlib.Path(__file__).parents[1] / "configs/ROADMAP_TODO.md"
-PATTERN = re.compile(r"<!-- TASK:(FS\\d+) status=pending -->(?:\\s*- \\[ ] \\*\\*(.*?)\\*\\*)")
+PATTERN = re.compile(
+    r"<!-- TASK:(FS\\d+) status=pending -->"
+    r"(?:\\s*- \\[ ] \\*\\*(.*?)\\*\\*)"
+)
 
 md = ROADMAP.read_text()
 match = PATTERN.search(md)
