@@ -1,16 +1,43 @@
-## vision_roadmap.md
+# Vision & Roadmap
 
-### Vision Statement
+## One‑Command Autonomous Dev Platform
 
-An **autonomous development agent platform** that can clone, build, and iteratively improve any codebase with minimal human intervention. The vision is a single-command UX – you simply specify a high-level goal (`cap run "Your Goal"`), and the agent does the rest: generating tasks, coding solutions, testing, and opening pull requests with human-ready summaries. Every run is **deterministic** and reproducible (pinned dependencies, consistent CI passes) to ensure reliability across environments. The platform maintains a transparent ledger of changes: after each task it produces a concise **debrief report** and uses a PR-based workflow for auditability. Safety and openness are core tenets – only MIT/Apache-licensed code is assimilated (a LICENSE is enforced), and robust security checks (Bandit static analysis, etc.) guard against vulnerabilities. As the platform evolves, it will orchestrate multiple specialized agents (Planner, Coder, Reviewer) working in concert, and even **self-debug/self-heal** by detecting and fixing errors automatically – all while keeping the developer in control of review and merge decisions.
+The long‑term goal is **a single CLI entry‑point** that accepts a plain‑English goal and then, without human intervention, runs a Planner → Coder → Reviewer loop until the improvement is shipped and merged.
 
-### Roadmap Phases (FS16–FS35 and Beyond)
+---
 
-| **Phase**                           | **Tasks (FS)**               | **Focus & Outcomes** |
-| ----------------------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Phase 2: Deterministic Pipeline** | **FS16–FS22**                | **End-to-end task automation.** The agent can pick up pending tasks, update their status, edit code with **Filesystem/GitHub tools**, then push a branch and open a PR autonomously. It also generates a **debrief** for each task and attaches it to the PR. Result: one command yields a code change and a ready-to-review PR, making the human a reviewer instead of a micro-manager. |
-| **Phase 3: Strategic Power-ups**    | **FS23–FS30D**                | **Advanced capabilities & reliability.** Introduces optional tools for **searching docs/code** and **debugging stack traces**, plus **session memory** to persist context across runs. A multi-agent loop emerges: **Planner → Engineer → Verifier** roles let the agent plan high-level goals, implement them, and self-review results. CI safety is strengthened (unit tests, linting in PR) and the model becomes pluggable (e.g. swap in a local LLM). The agent can even take a plain English goal and break it into tasks (natural-language task planning). Phase 3 culminates in a **fully autonomous, self-reviewing, extensible dev companion**. |
-| **Phase 4: Plugin Assimilation**    | **FS31–FS36**                | **Autonomous ecosystem integration.** The agent gains the ability to **discover** useful third-party libraries or tools (prioritizing permissive licenses) and test them in a safe **sandbox** environment. It **benchmarks** new plugins against existing code to evaluate improvements, then **auto-wraps** or adapts the integration for compatibility. A dedicated **PR-bot** component manages these plugin update pull requests, and a **nightly “Borg” routine** can run assimilation cycles regularly. This phase lets the agent continuously improve the codebase by assimilating external capabilities (within security and license guardrails) without explicit human prompts. |
-| **Beyond FS (Future)**              | *Multi-agent & Self-healing* | **Multi-agent collaboration and self-healing.** After FS35, the platform will refine multi-agent orchestration – e.g. multiple Codex agents acting as Planner, Coder, Tester working in harmony on complex objectives – and introduce **debug self-healing** loops where the agent automatically detects failures or regressions and fixes them. These features will push the system beyond the initial roadmap, allowing it to tackle larger projects and recover from errors with even less human intervention, while maintaining transparency and trust. |
+## Phases
 
-**Sources:** Roadmap tasks and outcomes from repository documents.
+| Phase | Scope | Key Feature Steps |
+|-------|-------|-------------------|
+| **0 – Foundations (✅)** | Deterministic offline bootstrap, lint/test CI, empty agent stubs | FS01‑16 |
+| **1 – Plumbing (🚧)** | Filesystem & GitHub tools, task loop, auto‑PR, debrief file/PR integration | FS17‑22 |
+| **2 – Core Automation** | **Moved forward** to unlock headless Planner → Coder → Reviewer ASAP | **FS23‑26** |
+| **3 – Knowledge & Memory** | Vector search, session memory, multi‑agent roles, write‑safety | FS27‑33 |
+| **4 – Plugin Ecosystem** | Discovery, voting, benchmark & auto‑wrap integration | FS34‑38 |
+| **5 – Self‑Healing & Nightlies** | Nightly “Borg” maintenance run assimilates improvements | FS39 |
+
+> **Change‑log 2025‑05‑21:** Former FS30A‑D renamed **FS23‑26** and pulled into Phase 2 to accelerate end‑to‑end automation.
+
+---
+
+## Success Criteria per Phase
+
+1. **Plumbing:** An ADK agent can edit files, push a branch, open a PR, and attach a debrief; CI stays green.  
+2. **Core Automation:** A cron‑driven orchestrator calls Deep Research (Planner) and Codex (Coder); token spend monitor halts if nearing budget.  
+3. **Knowledge & Memory:** Agents answer context‑heavy questions without re‑scraping GitHub; previous debriefs are recalled.  
+4. **Plugin Ecosystem:** The system routinely benchmarks and swaps in best‑of‑breed open‑source replacements.  
+5. **Self‑Healing:** Nightly run fixes lint, updates deps, and merges safe PRs automatically.
+
+---
+
+## Budget Guardrails
+
+* Primary compute stays **within the ChatGPT Pro plan** (Deep Research & Codex via web).  
+* OpenAI/Gemini API keys used sparingly; the Prometheus cost monitor (FS26) enforces quota.
+
+---
+
+## Current Focus
+
+🚀 **Finish FS17‑26** to prove the unattended Planner → Coder → Reviewer loop. Everything else is polish once that backbone is solid.
