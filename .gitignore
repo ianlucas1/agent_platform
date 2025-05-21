@@ -33,3 +33,4 @@ Thumbs.db
 # ─── Reports & agent outputs ───────────────────────────
 reports/*.log
 reports/*_scratch.*
+.env

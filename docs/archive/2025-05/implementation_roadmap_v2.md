@@ -1,6 +1,7 @@
 # Implementation Roadmap
 
 ## Who is this for?
+
 You – a solo developer who wants an autonomous dev agent without drowning in details.  
 Each phase is sized so you can finish a task or two in a single evening.
 
@@ -49,4 +50,4 @@ Each phase is sized so you can finish a task or two in a single evening.
 2. Open a feature branch named `capx/FSxx-short-slug`.  
 3. Complete the task, open a PR, and tick it off in `configs/ROADMAP_TODO.md`.
 
-_Updated 2025-05-18._
+*Updated 2025-05-18.*

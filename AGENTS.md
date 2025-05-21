@@ -93,7 +93,7 @@ python scripts/parse_roadmap.py --format json | jq .
 
 * **Title:** `[<area>] <concise description>`  
   Example: `[scripts] make bootstrap lock‑file aware`
-* **Body:** Include the *Contribution checklist* above.
+* **Body:** Include the _Contribution checklist_ above.
 * After Codex run ends with `echo DONE`, click **Push ▾ → Create PR**,
   wait for CI, then merge or fix.
 

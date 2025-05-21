@@ -1,8 +1,0 @@
-name: markdown-lint
-on: [pull_request]
-jobs:
-  mdl:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: avto-dev/markdown-lint@v1

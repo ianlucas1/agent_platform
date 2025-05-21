@@ -12,6 +12,7 @@
 ```
 
 **Guidelines**
+
 * Run on `main`; do **not** create or mention branches.
 * Ask Mode only — no file edits or branch operations.
 * Output table only (see header above).

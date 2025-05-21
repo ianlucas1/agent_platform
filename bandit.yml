@@ -1,0 +1,6 @@
+exclude_dirs:
+  - scripts
+
+skips:
+  - B603
+  - B607
