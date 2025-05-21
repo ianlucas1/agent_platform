@@ -99,4 +99,8 @@ python scripts/parse_roadmap.py --format json | jq .
 
 ---
 
-_Last updated: 2025-05-20_
+## FilesystemTool
+
+| Name            | Port | Purpose                                              |
+|-----------------|------|------------------------------------------------------|
+| FilesystemTool  | 8787 | Local read/write ops so agents can patch the codebase|
