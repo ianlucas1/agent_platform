@@ -6,7 +6,7 @@ Legend
 
 ---
 
-*Note: FS30A–FS30D have been moved forward to immediately follow FS22 to fast‑track the Planner → Coder → Reviewer automation loop.*
+*Note: Former FS30A–FS30D have been renumbered FS23–FS26 to preserve chronological order.*
 
 <!-- TASK:FS01 status=done -->
 - [x] **FS01 – Bootstrap script** — `scripts/bootstrap.sh` installs Python 3.11, Node 18, apt/brew packages.
@@ -74,55 +74,55 @@ Legend
 <!-- TASK:FS22 status=pending -->
 - [ ] **FS22 – Debrief in PR** — embed or link the debrief in the PR description.
 
-<!-- TASK:FS30A status=pending -->
-- [ ] **FS30A – Deep Research wrapper tool** — call Deep Research API or headless Playwright; store audit markdown in `reports/`.
-
-<!-- TASK:FS30B status=pending -->
-- [ ] **FS30B – Codex automation harness** — programmatic interface or Playwright driver; triggers task prompt, saves patches & logs.
-
-<!-- TASK:FS30C status=pending -->
-- [ ] **FS30C – Orchestrator agent MVP** — orchestrates Deep‑Research Planner and Codex harness; loops tasks until none pending, schedules next cycle.
-
-<!-- TASK:FS30D status=pending -->
-- [ ] **FS30D – Cost monitor & throttle** — track monthly token spend (Prometheus counter); halt cycles when spend nears budget cap.
-
 <!-- TASK:FS23 status=pending -->
-- [ ] **FS23 – Knowledge graph index** — add DuckDB/Chroma vector store for code base.
+- [ ] **FS23 – Deep Research wrapper tool** — call Deep Research API or headless Playwright; store audit markdown in `reports/`.
 
 <!-- TASK:FS24 status=pending -->
-- [ ] **FS24 – Search tool** — agent tool to query the vector store.
+- [ ] **FS24 – Codex automation harness** — programmatic interface or Playwright driver; triggers task prompt, saves patches & logs.
 
 <!-- TASK:FS25 status=pending -->
-- [ ] **FS25 – Session memory** — persist last N debriefs to JSON; feed them into agent context.
+- [ ] **FS25 – Orchestrator agent MVP** — orchestrates Deep‑Research Planner and Codex harness; loops tasks until none pending, schedules next cycle.
 
 <!-- TASK:FS26 status=pending -->
-- [ ] **FS26 – Planner → Engineer → Verifier** — multi-agent roles, handshake schema.
+- [ ] **FS26 – Cost monitor & throttle** — track monthly token spend (Prometheus counter); halt cycles when spend nears budget cap.
 
 <!-- TASK:FS27 status=pending -->
-- [ ] **FS27 – Unit tests & safety rails** — pytest smoke tests, Ruff/Black CI enforcement, write-whitelist.
+- [ ] **FS27 – Knowledge graph index** — add DuckDB/Chroma vector store for code base.
 
 <!-- TASK:FS28 status=pending -->
-- [ ] **FS28 – Pluggable model backend** — LiteLLM config file to swap Codex with local model easily.
+- [ ] **FS28 – Search tool** — agent tool to query the vector store.
 
 <!-- TASK:FS29 status=pending -->
-- [ ] **FS29 – Natural-language goal intake** — CLI or API endpoint that converts a plain-English goal into FS-tasks.
+- [ ] **FS29 – Session memory** — persist last N debriefs to JSON; feed them into agent context.
+
+<!-- TASK:FS30 status=pending -->
+- [ ] **FS30 – Planner → Engineer → Verifier** — multi-agent roles, handshake schema.
 
 <!-- TASK:FS31 status=pending -->
-- [ ] **FS31 – Plugin Discovery** — Detect opportunities to replace custom code with MIT/Apache libraries.
+- [ ] **FS31 – Unit tests & safety rails** — pytest smoke tests, Ruff/Black CI enforcement, write-whitelist.
 
 <!-- TASK:FS32 status=pending -->
-- [ ] **FS32 – Plugin Voting** — Evaluate candidate plugins for correctness & community health.
+- [ ] **FS32 – Pluggable model backend** — LiteLLM config file to swap Codex with local model easily.
 
 <!-- TASK:FS33 status=pending -->
-- [ ] **FS33 – Plugin Benchmark** — Compare plugin performance & correctness vs. existing implementation.
+- [ ] **FS33 – Natural-language goal intake** — CLI or API endpoint that converts a plain-English goal into FS-tasks.
 
 <!-- TASK:FS34 status=pending -->
-- [ ] **FS34 – Auto‑Wrap Integration** — Refactor code to use approved plugin via wrapper/adapter.
+- [ ] **FS34 – Plugin Discovery** — Detect opportunities to replace custom code with MIT/Apache libraries.
 
 <!-- TASK:FS35 status=pending -->
-- [ ] **FS35 – PR Bot Automation** — Bot manages plugin‑integration PRs; auto‑merge on green CI per policy.
+- [ ] **FS35 – Plugin Voting** — Evaluate candidate plugins for correctness & community health.
 
 <!-- TASK:FS36 status=pending -->
-- [ ] **FS36 – Nightly “Borg” Run** — Scheduled job runs agent in maintenance mode to assimilate improvements.
+- [ ] **FS36 – Plugin Benchmark** — Compare plugin performance & correctness vs. existing implementation.
+
+<!-- TASK:FS37 status=pending -->
+- [ ] **FS37 – Auto‑Wrap Integration** — Refactor code to use approved plugin via wrapper/adapter.
+
+<!-- TASK:FS38 status=pending -->
+- [ ] **FS38 – PR Bot Automation** — Bot manages plugin‑integration PRs; auto‑merge on green CI per policy.
+
+<!-- TASK:FS39 status=pending -->
+- [ ] **FS39 – Nightly “Borg” Run** — Scheduled job runs agent in maintenance mode to assimilate improvements.
 
 ---
