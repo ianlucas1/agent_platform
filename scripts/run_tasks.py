@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """FS19 – Task loop MVP.
 
-Reads `configs/ROADMAP_TODO.md`, finds the first `status=pending` task,
-and prints its FS number and title.
+Reads `configs/ROADMAP_TODO.md`, finds the first pending task, and prints
+its FS number and title.
 """
 
 import pathlib
@@ -14,8 +14,8 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 ROADMAP = ROOT / "configs" / "ROADMAP_TODO.md"
 
 PATTERN = re.compile(
-    r"<!-- TASK:(FS\d+) status=pending -->"  # HTML task marker
-    r"(?:\s*- \[ ] \*\*(.*?)\*\*)",          # Markdown checklist line
+    r"<!-- TASK:(FS\d+) status=pending -->"
+    r"(?:\s*- \[ ] \*\*(.*?)\*\*)",
 )
 
 
