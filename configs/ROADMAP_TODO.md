@@ -79,7 +79,7 @@ Legend
 * [x] Register remote MCP servers — add `configs/mcp_servers.yaml` (Filesystem & GitHub endpoints).
 
 <!-- FS24 -->
-* [ ] Responses‑API client wrapper — helper that calls Deep‑Research/Responses API with `tool_server_url`.
+* [x] Auto-run Deep Research wrapper in PR flow — invoke `scripts/run_deep_research.py` automatically after debrief generation in `auto_pr.py`.
 
 <!-- FS25 -->
 * [ ] Remove local FastAPI bootstraps — drop local server scripts & related CI steps.
@@ -136,4 +136,4 @@ Legend
 * [ ] PR Bot Automation — bot manages plugin‑integration PRs; auto‑merge on green CI per policy.
 
 <!-- FS43 -->
-* [ ] Nightly “Borg” Run — scheduled job runs agent in maintenance mode to assimilate improvements.
+* [ ] Nightly "Borg" Run — scheduled job runs agent in maintenance mode to assimilate improvements.
