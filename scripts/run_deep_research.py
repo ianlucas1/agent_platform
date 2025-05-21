@@ -42,7 +42,7 @@ def build_prompt(fs_list):
     lines.append("\nProvide a numbered list of actionable tasks for each FS.")
     return "\n".join(lines)
 
-def call_deep_research(prompt: str) -> str:
+def call_deep_research(client, prompt: str) -> str:
     """
     Invoke the Deep Research API with `prompt` and return the raw result.
     """
@@ -74,7 +74,7 @@ def main():
     client = load_credentials()
     fs_items = parse_roadmap()
     prompt = build_prompt(fs_items)
-    plan = call_deep_research(prompt)
+    plan = call_deep_research(client, prompt)
     write_report(plan)
 
 if __name__ == "__main__":
