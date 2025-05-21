@@ -4,7 +4,10 @@ FS19: Task loop MVP.
 Reads configs/ROADMAP_TODO.md, finds first `status=pending` task,
 and prints its FS number + title. (Editing comes later.)
 """
-import re, pathlib, sys, textwrap
+import pathlib
+import re
+import sys
+import textwrap
 
 ROADMAP = pathlib.Path(__file__).parents[1] / "configs/ROADMAP_TODO.md"
 PATTERN = re.compile(
