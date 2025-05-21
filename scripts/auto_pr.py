@@ -11,7 +11,7 @@ def get_current_branch():
     return subprocess.check_output(["git", "rev-parse", "--abbrev-ref", "HEAD"]).decode().strip()
 
 def push_branch(branch):
-    subprocess.run(["git", "push", "--set-upstream", "origin", branch], check=True, shell=False)
+    subprocess.run(["git", "push", "--set-upstream", "origin", branch], check=True)
 
 def open_pull_request(branch):
     url = f"https://api.github.com/repos/{REPO}/pulls"
