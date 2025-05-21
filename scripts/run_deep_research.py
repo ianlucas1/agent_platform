@@ -13,11 +13,11 @@ from dotenv import load_dotenv
 
 def load_credentials():
     load_dotenv()
-    dr_key = os.getenv("DEEP_RESEARCH_API_KEY")
-    if not dr_key:
-        raise RuntimeError("DEEP_RESEARCH_API_KEY not set in environment")
-    # initialize Deep Research client
-    client = OpenAI(api_key=dr_key)
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        raise RuntimeError("OPENAI_API_KEY not set in environment")
+    # initialize Deep Research client using your OpenAI key
+    client = OpenAI(api_key=api_key)
     return client
 
 def parse_roadmap():
