@@ -6,11 +6,11 @@ Usage: invoked by the orchestrator immediately before FSxx auto-PR.
 import os
 import subprocess # nosec B404
 import re
-import openai
+from openai import OpenAI
 
 # --- Configuration ---
-openai.api_key = os.getenv("OPENAI_API_KEY")
-MODEL = os.getenv("OPENAI_MODEL", "gpt-4-turbo")
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 
 def run_cmd(cmd):
     return subprocess.check_output(cmd, text=True).strip() # nosec B603
@@ -39,13 +39,13 @@ def generate_debrief(fs, desc, files):
         f"**Tests:** All passing.\n\n"
         "Include sections: Outcome, Key Changes, Lessons Learned."
     )
-    resp = openai.ChatCompletion.create(
+    resp = client.chat.completions.create(
         model=MODEL,
         messages=[
             {"role":"system","content":"You are a helpful assistant that writes clear debrief reports."},
-            {"role":"user","content":prompt}
+            {"role":"user","content":prompt},
         ],
-        temperature=0.2
+        temperature=0.2,
     )
     return resp.choices[0].message.content
 
