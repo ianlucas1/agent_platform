@@ -19,7 +19,7 @@ def get_branch():
     return run_cmd(["git", "rev-parse", "--abbrev-ref", "HEAD"])
 
 def parse_fs_number(branch):
-    m = re.search(r"(FS\\d+)", branch)
+    m = re.search(r"(FS\d+)", branch)
     return m.group(1) if m else None
 
 def get_task_description(fs):
