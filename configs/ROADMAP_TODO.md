@@ -59,8 +59,8 @@ Legend
 <!-- TASK:FS17 status=done -->
 - [x] **FS17 – Filesystem tool** — add ADK tool pointing at `http://localhost:8787`.
 
-<!-- TASK:FS18 status=pending -->
-- [ ] **FS18 – GitHub tool** — add ADK tool for commits/PRs via `http://localhost:8788`.
+<!-- TASK:FS18 status=done -->
+- [x] **FS18 – GitHub tool** — add ADK tool for commits/PRs via `http://localhost:8788`.
 
 <!-- TASK:FS19 status=pending -->
 - [ ] **FS19 – Task loop** — `scripts/run_tasks.py` pulls first pending task, invokes agent, updates status.
