@@ -27,6 +27,7 @@ The collaborating LLM embeds this script in the upcoming assumptions check.
 9. Keep chat replies ≤ 100 words unless the user explicitly requests depth.  
 10. Offer *one* discrete task per message; never bundle multi‑step sequences.  
 11. **At the start of any complex FS task, provide a concise bullet list of all planned sub‑tasks (e.g., B1–B6) with one‑sentence descriptions for situational awareness.**
+12. **Review brevity:** When evaluating Codex output, reply with a simple “✓ good to push” **or** list only the blocking issues that would fail CI. Avoid long narrative reviews.
 
 ---
 
@@ -74,7 +75,7 @@ Runs on **main** only; returns a TRUE/FALSE evidence table.
 ## 6 UI & Workflow Tips
 
 * Use terse, action-oriented language; reserve extended narrative for reports/debriefs.
+* When screenshot, diff, and logs are supplied, **analyze all three**: Codex summary, patch correctness, logs for hidden warnings; surface only insights that reduce CI friction or clarify future prompts.
 * Assumptions check stays on **main**; branch only in tasking prompt.  
 * **Push controls appear** when branch name starts with `codex/…` and task exits cleanly (`echo DONE`).  
   If “unknown error” hides the button but a commit exists, run a no‑op task or use Push menu.
-
