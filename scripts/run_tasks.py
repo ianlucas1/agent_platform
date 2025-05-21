@@ -6,6 +6,7 @@ Reads configs/ROADMAP_TODO.md, finds the first `status=pending` task,
 and prints its FS number and title.
 """
 
+
 import pathlib
 import re
 import sys
@@ -32,7 +33,6 @@ def main() -> None:
             """,
         ).strip(),
     )
-
 
 if __name__ == "__main__":  # pragma: no cover
     main()
