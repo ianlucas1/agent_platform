@@ -91,7 +91,7 @@ Legend
 * [x] Deep Research wrapper tool — call Deep Research API or headless Playwright; store audit markdown in `reports/`.
 
 <!-- FS28 -->
-* [ ] Codex automation harness — programmatic interface or Playwright driver; triggers task prompt, saves patches & logs.
+* [x] Codex automation harness — programmatic interface or Playwright driver; triggers task prompt, saves patches & logs.
 
 <!-- FS29 -->
 * [ ] Orchestrator agent MVP — orchestrates Deep‑Research Planner and Codex harness; loops tasks until none pending, schedules next cycle.
