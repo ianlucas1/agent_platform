@@ -88,7 +88,7 @@ Legend
 * [ ] MCP smoke‑test in CI — pytest hits `/health` on remote MCP servers via Responses API.
 
 <!-- FS27 -->
-* [ ] Deep Research wrapper tool — call Deep Research API or headless Playwright; store audit markdown in `reports/`.
+* [x] Deep Research wrapper tool — call Deep Research API or headless Playwright; store audit markdown in `reports/`.
 
 <!-- FS28 -->
 * [ ] Codex automation harness — programmatic interface or Playwright driver; triggers task prompt, saves patches & logs.
