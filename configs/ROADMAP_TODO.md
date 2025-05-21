@@ -66,7 +66,7 @@ Legend
 - [x] **FS19 – Task loop** — `scripts/run_tasks.py` pulls first pending task, invokes agent, updates status.
 
 <!-- TASK:FS20 status=pending -->
-- [ ] **FS20 – Auto-PR** — after edits, push branch `capx/FSxx-slug` & open PR with template.
+- [ ] **FS20 – Auto‑PR** — after edits, push branch `capx/FSxx‑<slug>` & open PR with template.
 
 <!-- TASK:FS21 status=pending -->
 - [ ] **FS21 – Debrief file** — agent writes `reports/FSxx_debrief.md` summarising work.
@@ -75,54 +75,66 @@ Legend
 - [ ] **FS22 – Debrief in PR** — embed or link the debrief in the PR description.
 
 <!-- TASK:FS23 status=pending -->
-- [ ] **FS23 – Deep Research wrapper tool** — call Deep Research API or headless Playwright; store audit markdown in `reports/`.
+- [ ] **FS23 – Register remote MCP servers** — add `configs/mcp_servers.yaml` (Filesystem & GitHub endpoints).
 
 <!-- TASK:FS24 status=pending -->
-- [ ] **FS24 – Codex automation harness** — programmatic interface or Playwright driver; triggers task prompt, saves patches & logs.
+- [ ] **FS24 – Responses‑API client wrapper** — helper that calls Deep‑Research/Responses API with `tool_server_url`.
 
 <!-- TASK:FS25 status=pending -->
-- [ ] **FS25 – Orchestrator agent MVP** — orchestrates Deep‑Research Planner and Codex harness; loops tasks until none pending, schedules next cycle.
+- [ ] **FS25 – Remove local FastAPI bootstraps** — drop local server scripts & related CI steps.
 
 <!-- TASK:FS26 status=pending -->
-- [ ] **FS26 – Cost monitor & throttle** — track monthly token spend (Prometheus counter); halt cycles when spend nears budget cap.
+- [ ] **FS26 – MCP smoke‑test in CI** — pytest hits `/health` on remote MCP servers via Responses API.
 
 <!-- TASK:FS27 status=pending -->
-- [ ] **FS27 – Knowledge graph index** — add DuckDB/Chroma vector store for code base.
+- [ ] **FS27 – Deep Research wrapper tool** — call Deep Research API or headless Playwright; store audit markdown in `reports/`.
 
 <!-- TASK:FS28 status=pending -->
-- [ ] **FS28 – Search tool** — agent tool to query the vector store.
+- [ ] **FS28 – Codex automation harness** — programmatic interface or Playwright driver; triggers task prompt, saves patches & logs.
 
 <!-- TASK:FS29 status=pending -->
-- [ ] **FS29 – Session memory** — persist last N debriefs to JSON; feed them into agent context.
+- [ ] **FS29 – Orchestrator agent MVP** — orchestrates Deep‑Research Planner and Codex harness; loops tasks until none pending, schedules next cycle.
 
 <!-- TASK:FS30 status=pending -->
-- [ ] **FS30 – Planner → Engineer → Verifier** — multi-agent roles, handshake schema.
+- [ ] **FS30 – Cost monitor & throttle** — track monthly token spend; halt cycles when spend nears budget cap.
 
 <!-- TASK:FS31 status=pending -->
-- [ ] **FS31 – Unit tests & safety rails** — pytest smoke tests, Ruff/Black CI enforcement, write-whitelist.
+- [ ] **FS31 – Knowledge graph index** — add DuckDB/Chroma vector store for code base.
 
 <!-- TASK:FS32 status=pending -->
-- [ ] **FS32 – Pluggable model backend** — LiteLLM config file to swap Codex with local model easily.
+- [ ] **FS32 – Search tool** — agent tool to query the vector store.
 
 <!-- TASK:FS33 status=pending -->
-- [ ] **FS33 – Natural-language goal intake** — CLI or API endpoint that converts a plain-English goal into FS-tasks.
+- [ ] **FS33 – Session memory** — persist last N debriefs to JSON; feed them into agent context.
 
 <!-- TASK:FS34 status=pending -->
-- [ ] **FS34 – Plugin Discovery** — Detect opportunities to replace custom code with MIT/Apache libraries.
+- [ ] **FS34 – Planner ➜ Engineer ➜ Verifier** — multi‑agent roles, handshake schema.
 
 <!-- TASK:FS35 status=pending -->
-- [ ] **FS35 – Plugin Voting** — Evaluate candidate plugins for correctness & community health.
+- [ ] **FS35 – Unit tests & safety rails** — pytest smoke tests, Ruff/Black CI enforcement, write‑whitelist.
 
 <!-- TASK:FS36 status=pending -->
-- [ ] **FS36 – Plugin Benchmark** — Compare plugin performance & correctness vs. existing implementation.
+- [ ] **FS36 – Pluggable model backend** — LiteLLM config file to swap Codex with local model easily.
 
 <!-- TASK:FS37 status=pending -->
-- [ ] **FS37 – Auto‑Wrap Integration** — Refactor code to use approved plugin via wrapper/adapter.
+- [ ] **FS37 – Natural‑language goal intake** — CLI or API endpoint that converts a plain‑English goal into FS‑tasks.
 
 <!-- TASK:FS38 status=pending -->
-- [ ] **FS38 – PR Bot Automation** — Bot manages plugin‑integration PRs; auto‑merge on green CI per policy.
+- [ ] **FS38 – Plugin Discovery** — detect opportunities to replace custom code with MIT/Apache libraries.
 
 <!-- TASK:FS39 status=pending -->
-- [ ] **FS39 – Nightly “Borg” Run** — Scheduled job runs agent in maintenance mode to assimilate improvements.
+- [ ] **FS39 – Plugin Voting** — evaluate candidate plugins for correctness & community health.
+
+<!-- TASK:FS40 status=pending -->
+- [ ] **FS40 – Plugin Benchmark** — compare plugin performance & correctness vs. existing implementation.
+
+<!-- TASK:FS41 status=pending -->
+- [ ] **FS41 – Auto‑Wrap Integration** — refactor code to use approved plugin via wrapper/adapter.
+
+<!-- TASK:FS42 status=pending -->
+- [ ] **FS42 – PR Bot Automation** — bot manages plugin‑integration PRs; auto‑merge on green CI per policy.
+
+<!-- TASK:FS43 status=pending -->
+- [ ] **FS43 – Nightly “Borg” Run** — scheduled job runs agent in maintenance mode to assimilate improvements.
 
 ---
