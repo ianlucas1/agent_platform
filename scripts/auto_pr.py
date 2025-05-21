@@ -30,3 +30,4 @@ if __name__ == "__main__":
     branch = get_current_branch()
     push_branch(branch)
     open_pull_request(branch)
+# trigger CI
