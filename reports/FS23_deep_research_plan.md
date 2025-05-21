@@ -1,0 +1,1 @@
+To create a detailed implementation plan for a feature, I need to know the specific feature steps (FS) you want to implement. Please provide the feature steps or describe the feature you have in mind, and I will generate a numbered list of actionable tasks for each step.
