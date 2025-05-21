@@ -1,6 +1,6 @@
 # Technical Capabilities of OpenAI Codex
 
-**https://chatgpt.com/share/682a4c17-3374-8006-ae30-dbc3cdaa1ace**
+**<https://chatgpt.com/share/682a4c17-3374-8006-ae30-dbc3cdaa1ace>**
 
 ## Introduction and Context
 

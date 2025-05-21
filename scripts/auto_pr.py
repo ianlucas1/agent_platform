@@ -2,6 +2,9 @@
 import os
 import subprocess
 import requests
+from dotenv import load_dotenv
+
+load_dotenv()
 
 REPO = "ianlucas1/agent_platform"
 BASE_BRANCH = "main"
@@ -14,8 +17,11 @@ def push_branch(branch):
     subprocess.run(["git", "push", "--set-upstream", "origin", branch], check=True)  # nosec B603,B607
 
 def open_pull_request(branch):
-    url = f"https://api.github.com/repos/{REPO}/pulls"
-    headers = {"Authorization": f"token {TOKEN}"}
+    url = f"https://api.github.com/repos/ianlucas1/agent_platform/pulls"
+    headers = {
+    "Authorization": f"Bearer {TOKEN}",
+    "Accept": "application/vnd.github+json"
+}
     data = {
         "title": f"[{branch}] Agent-generated PR",
         "head": branch,

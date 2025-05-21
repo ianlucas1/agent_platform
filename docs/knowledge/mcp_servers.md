@@ -20,4 +20,3 @@ npm install -g @modelcontextprotocol/server-filesystem @modelcontextprotocol/ser
 ```
 
 Set `GITHUB_PERSONAL_ACCESS_TOKEN` in Codex secrets before starting the GitHub server.
-
