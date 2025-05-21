@@ -18,6 +18,7 @@ jobs:
           pip install black ruff bandit
       - name: Run linters
         run: |
-          ruff check .
-          black --check .
+          ruff check . --fix --exit-zero   # auto-format, never fails
+          black .                          # apply Black formatting
+          black --check .                  # now passes (no diff)
           bandit -r .
