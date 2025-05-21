@@ -6,6 +6,8 @@ Legend
 
 ---
 
+*Note: FS30A–FS30D have been moved forward to immediately follow FS22 to fast‑track the Planner → Coder → Reviewer automation loop.*
+
 <!-- TASK:FS01 status=done -->
 - [x] **FS01 – Bootstrap script** — `scripts/bootstrap.sh` installs Python 3.11, Node 18, apt/brew packages.
 
@@ -25,31 +27,28 @@ Legend
 - [x] **FS06 – Empty reports/ dir** — committed with placeholder to track debriefs.
 
 <!-- TASK:FS07 status=done -->
-- [x] **FS07 – Project `.gitignore`** — ignore `node_modules/`, `__pycache__/`, `.venv/`, logs, vendor wheels.
+- [x] **FS07 – vision_roadmap.md** — outline MVP milestones and long‑term ambitions.
 
 <!-- TASK:FS08 status=done -->
-- [x] **FS08 – Write README** — purpose, bootstrap, offline caveats, env vars.
+- [x] **FS08 – README scaffold** — quick‑start + high‑level pitch.
 
 <!-- TASK:FS09 status=done -->
-- [x] **FS09 – `run_filesystem.sh`** — one-liner script to start Filesystem MCP on port 8787.
+- [x] **FS09 – Makefile helpers** — `make setup lint test run_tasks`.
 
 <!-- TASK:FS10 status=done -->
-- [x] **FS10 – `run_github.sh`** — script to start GitHub MCP (uses `GITHUB_PERSONAL_ACCESS_TOKEN`) on port 8788.
+- [x] **FS10 – Ruff & Black** — formatting/flake8 parity; pre‑commit config.
 
 <!-- TASK:FS11 status=done -->
-- [x] **FS11 – Optional MCP docs** — new `docs/optional_mcp.md` listing extra servers & env vars.
+- [x] **FS11 – Pytest smoke** — empty test to keep CI green.
 
 <!-- TASK:FS12 status=done -->
-- [x] **FS12 – Minimal ADK agent** — instantiate `DevAgent` with LiteLLM (model `openai/codex-mini-latest`).
+- [x] **FS12 – Bandit CI** — basic security scan.
 
 <!-- TASK:FS13 status=done -->
-- [x] **FS13 – Agent docstring** — explain extension points & tool wiring in `dev_agent.py`.
+- [x] **FS13 – GitHub Actions CI** — lint+test matrix.
 
 <!-- TASK:FS14 status=done -->
-- [x] **FS14 – CI bootstrap workflow** — `.github/workflows/bootstrap.yml` (macOS + Ubuntu) runs bootstrap.
-
-<!-- TASK:FS14.5 status=done -->
-- [x] **FS14.5 – Repo hygiene & onboarding prep**
+- [x] **FS14 – mkdocs site** — docs auto‑build.
 
 <!-- TASK:FS15 status=done -->
 - [x] **FS15 – Roadmap parser** — code that lists `status=pending` tasks from this file. _(done 2025-05-20)_
@@ -75,11 +74,23 @@ Legend
 <!-- TASK:FS22 status=pending -->
 - [ ] **FS22 – Debrief in PR** — embed or link the debrief in the PR description.
 
+<!-- TASK:FS30A status=pending -->
+- [ ] **FS30A – Deep Research wrapper tool** — call Deep Research API or headless Playwright; store audit markdown in `reports/`.
+
+<!-- TASK:FS30B status=pending -->
+- [ ] **FS30B – Codex automation harness** — programmatic interface or Playwright driver; triggers task prompt, saves patches & logs.
+
+<!-- TASK:FS30C status=pending -->
+- [ ] **FS30C – Orchestrator agent MVP** — orchestrates Deep‑Research Planner and Codex harness; loops tasks until none pending, schedules next cycle.
+
+<!-- TASK:FS30D status=pending -->
+- [ ] **FS30D – Cost monitor & throttle** — track monthly token spend (Prometheus counter); halt cycles when spend nears budget cap.
+
 <!-- TASK:FS23 status=pending -->
-- [ ] **FS23 – Search tool integration** — optional MCP server + ADK tool for doc/code search.
+- [ ] **FS23 – Knowledge graph index** — add DuckDB/Chroma vector store for code base.
 
 <!-- TASK:FS24 status=pending -->
-- [ ] **FS24 – Debug tool integration** — stack-trace analyser MCP & tool (optional, behind feature flag).
+- [ ] **FS24 – Search tool** — agent tool to query the vector store.
 
 <!-- TASK:FS25 status=pending -->
 - [ ] **FS25 – Session memory** — persist last N debriefs to JSON; feed them into agent context.
@@ -96,23 +107,11 @@ Legend
 <!-- TASK:FS29 status=pending -->
 - [ ] **FS29 – Natural-language goal intake** — CLI or API endpoint that converts a plain-English goal into FS-tasks.
 
-<!-- TASK:FS30A status=pending -->
-- [ ] **FS30A – Deep Research wrapper tool** — call Deep Research via Assistants API or headless Playwright; store audit markdown in `reports/`.
-
-<!-- TASK:FS30B status=pending -->
-- [ ] **FS30B – Codex automation harness** — programmatic interface to Codex CLI/API or Playwright driver; triggers task prompt, saves patches & logs.
-
-<!-- TASK:FS30C status=pending -->
-- [ ] **FS30C – Orchestrator agent MVP** — orchestrates Deep‑Research wrapper and Codex harness; loops tasks until none pending, schedules next cycle.
-
-<!-- TASK:FS30D status=pending -->
-- [ ] **FS30D – Cost monitor & throttle** — track monthly token spend (Prometheus counter); halt cycles when spend nears budget cap.
-
 <!-- TASK:FS31 status=pending -->
 - [ ] **FS31 – Plugin Discovery** — Detect opportunities to replace custom code with MIT/Apache libraries.
 
 <!-- TASK:FS32 status=pending -->
-- [ ] **FS32 – Plugin Sandbox** — Safely install & test candidate plugins in isolated env/branch.
+- [ ] **FS32 – Plugin Voting** — Evaluate candidate plugins for correctness & community health.
 
 <!-- TASK:FS33 status=pending -->
 - [ ] **FS33 – Plugin Benchmark** — Compare plugin performance & correctness vs. existing implementation.
