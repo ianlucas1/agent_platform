@@ -56,8 +56,8 @@ Legend
 <!-- TASK:FS16 status=done -->
 - [x] **FS16 – Status updater** — helper to flip `status=in_progress/done` in place.
 
-<!-- TASK:FS17 status=pending -->
-- [ ] **FS17 – Filesystem tool** — add ADK tool pointing at `http://localhost:8787`.
+<!-- TASK:FS17 status=done -->
+- [x] **FS17 – Filesystem tool** — add ADK tool pointing at `http://localhost:8787`.
 
 <!-- TASK:FS18 status=pending -->
 - [ ] **FS18 – GitHub tool** — add ADK tool for commits/PRs via `http://localhost:8788`.
