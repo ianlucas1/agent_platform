@@ -40,6 +40,10 @@ if __name__ == "__main__":
     branch = get_current_branch()
     # FS21: generate debrief report before opening the PR
     subprocess.run(["python3", "scripts/generate_debrief.py"], check=True)  # nosec B603
+
+    # FS27: auto-run Deep Research wrapper and commit its output
+    subprocess.run(["python3", "scripts/run_deep_research.py"], check=True)  # nosec B603
+
     push_branch(branch)
     open_pull_request(branch)
     # trigger CI
