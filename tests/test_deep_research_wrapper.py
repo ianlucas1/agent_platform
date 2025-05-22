@@ -8,9 +8,9 @@ sys.path.insert(0, repo_root)
 # import the module's main entrypoint
 import scripts.run_deep_research as rdr
 
-def test_fs27_deep_research_plan_created(tmp_path, monkeypatch):
+def test_deep_research_wrapper_creates_plan(tmp_path, monkeypatch):
     """
-    FS27: Verify that running the Deep Research wrapper creates the plan file.
+    Verify that running the Deep Research wrapper creates the plan file.
     """
     # Arrange: fresh reports directory, switch CWD
     reports_dir = tmp_path / "reports"
@@ -23,8 +23,8 @@ def test_fs27_deep_research_plan_created(tmp_path, monkeypatch):
     monkeypatch.setattr(rdr, "load_credentials", lambda: None)
     monkeypatch.setattr(rdr.subprocess, "run", lambda *args, **kwargs: None)
 
-    # Point the wrapper at our tmp_path output for FS27
-    output_path = reports_dir / "FS27_deep_research_plan.md"
+    # Point the wrapper at our tmp_path output
+    output_path = reports_dir / "FS23_deep_research_plan.md"
     monkeypatch.setattr(sys, "argv", ["run_deep_research.py", "--output", str(output_path)])
 
     # Act: invoke the wrapper in-process

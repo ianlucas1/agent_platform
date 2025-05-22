@@ -1,6 +1,6 @@
 # Task Backlog
 
-Legend  
+Legend
 
 * `[ ]` pending   `[-]` in progress   `[x]` done  
 * Each task is preceded by an HTML comment the automation loop can patch.
@@ -76,28 +76,28 @@ Legend
 * [x] Debrief in PR — embed or link the debrief in the PR description.
 
 <!-- FS23 -->
-* [x] Register remote MCP servers — add `configs/mcp_servers.yaml` (Filesystem & GitHub endpoints).
-
-<!-- FS24 -->
-* [x] Auto-run Deep Research wrapper in PR flow — invoke `scripts/run_deep_research.py` automatically after debrief generation in `auto_pr.py`.
-
-<!-- FS25 -->
-* [ ] Remove local FastAPI bootstraps — drop local server scripts & related CI steps.
-
-<!-- FS26 -->
-* [ ] MCP smoke‑test in CI — pytest hits `/health` on remote MCP servers via Responses API.
-
-<!-- FS27 -->
 * [x] Deep Research wrapper tool — call Deep Research API or headless Playwright; store audit markdown in `reports/`.
 
+<!-- FS24 -->
+* [ ] Codex automation harness — programmatic interface or Playwright driver; triggers task prompt, saves patches & logs.
+
+<!-- FS25 -->
+* [ ] Orchestrator agent MVP — orchestrates Deep‑Research planner and Codex harness; loops tasks until none pending.
+
+<!-- FS26 -->
+* [ ] Cost monitor & throttle — track monthly token spend; halt cycles when spend nears budget cap.
+
+<!-- FS27 -->
+* [ ] Register remote MCP servers — add `configs/mcp_servers.yaml` (Filesystem & GitHub endpoints).
+
 <!-- FS28 -->
-* [x] Codex automation harness — programmatic interface or Playwright driver; triggers task prompt, saves patches & logs.
+* [ ] Responses‑API client wrapper — helper that calls Deep‑Research/Responses API with `tool_server_url`.
 
 <!-- FS29 -->
-* [ ] Orchestrator agent MVP — orchestrates Deep‑Research Planner and Codex harness; loops tasks until none pending, schedules next cycle.
+* [ ] Remove local FastAPI bootstraps — drop local server scripts & related CI steps.
 
 <!-- FS30 -->
-* [ ] Cost monitor & throttle — track monthly token spend; halt cycles when spend nears budget cap.
+* [ ] MCP smoke-test in CI — pytest hits `/health` on remote MCP servers via Responses API.
 
 <!-- FS31 -->
 * [ ] Knowledge graph index — add DuckDB/Chroma vector store for code base.
@@ -109,7 +109,7 @@ Legend
 * [ ] Session memory — persist last N debriefs to JSON; feed them into agent context.
 
 <!-- FS34 -->
-* [ ] Planner ➜ Engineer ➜ Verifier — multi‑agent roles, handshake schema.
+* [ ] Planner → Engineer → Verifier — multi‑agent roles, handshake schema.
 
 <!-- FS35 -->
 * [ ] Unit tests & safety rails — pytest smoke tests, Ruff/Black CI enforcement, write‑whitelist.
@@ -136,4 +136,4 @@ Legend
 * [ ] PR Bot Automation — bot manages plugin‑integration PRs; auto‑merge on green CI per policy.
 
 <!-- FS43 -->
-* [ ] Nightly "Borg" Run — scheduled job runs agent in maintenance mode to assimilate improvements.
+* [ ] Nightly “Borg” Run — scheduled job runs agent in maintenance mode to assimilate improvements.
